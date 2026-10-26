@@ -36,7 +36,7 @@ app.get('/api/health', (req, res) => {
 
 // Helper to call Gemini with multi-model fallback
 async function callGemini(contents: string): Promise<string | null> {
-  const models = ['gemini-3.8-flash', 'gemini-3.1-flash-lite'];
+  const models = ['gemini-3.1-flash-lite', 'gemini-3.8-flash'];
   for (const model of models) {
     try {
       const response = await ai.models.generateContent({
@@ -125,7 +125,7 @@ Return only JSON without markdown fences.`;
 
 // Endpoint: Live AI Concierge Chat
 app.post('/api/concierge-chat', async (req, res) => {
-  const { message, plan } = req.body;
+  const { message, plan, history } = req.body;
 
   try {
     if (!process.env.GEMINI_API_KEY) {
@@ -139,22 +139,32 @@ app.post('/api/concierge-chat', async (req, res) => {
 Current Celebration: ${plan?.name}
 Occasion: ${plan?.type}
 City: ${plan?.city}
-Total Budget: ₹${plan?.totalBudget?.toLocaleString('en-IN')}
-Guests: ${plan?.guestsCount} (Seniors: ${plan?.guestBreakdown?.seniors || 0}, Children: ${plan?.guestBreakdown?.children || 0})
-Venue: ${plan?.venueName}
+Total Budget: ₹${plan?.totalBudget ? Number(plan.totalBudget).toLocaleString('en-IN') : '2,00,000'}
+Guests: ${plan?.guestsCount || 100} (Seniors: ${plan?.guestBreakdown?.seniors || 0}, Children: ${plan?.guestBreakdown?.children || 0})
+Venue: ${plan?.venueName || 'Local Grounds'}
 
 Guidelines:
 - Give practical, culturally authentic Indian advice (covering Muhurats, catering live counters, decibel limits, vendor negotiation).
 - Never hallucinate exact contract figures; refer to the provided budget.
 - Keep answers warm, concise (2-4 sentences max), and directly actionable.`;
 
-    const text = await callGemini(`${systemPrompt}\n\nUser Question: ${message}`);
+    let promptText = `${systemPrompt}\n\n`;
+    if (Array.isArray(history) && history.length > 0) {
+      promptText += `Previous conversation:\n`;
+      for (const h of history.slice(-4)) {
+        promptText += `${h.role === 'user' ? 'User' : 'Concierge'}: ${h.text}\n`;
+      }
+      promptText += `\n`;
+    }
+    promptText += `User Question: ${message}`;
+
+    const text = await callGemini(promptText);
     if (!text) {
       throw new Error('Gemini models currently at capacity');
     }
 
     res.json({
-      reply: text,
+      reply: text.trim(),
       aiPowered: true,
     });
   } catch (err) {

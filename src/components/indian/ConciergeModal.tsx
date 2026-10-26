@@ -45,14 +45,15 @@ export const ConciergeModal: React.FC<ConciergeModalProps> = ({ isOpen, onClose,
 
     setMessages((prev) => [...prev, userMsg]);
     setIsTyping(true);
-
     try {
+      const history = messages.map((m) => ({ role: m.sender, text: m.text }));
       const res = await fetch('/api/concierge-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: promptText,
           plan,
+          history,
         }),
       });
 
