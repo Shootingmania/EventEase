@@ -1,0 +1,6 @@
+{
+  "name": "EventEase - Event Lifecycle Platform",
+  "description": "Comprehensive, responsive event planning and operations platform for budgets, vendors, RSVPs, interactive seating, and live day-of timelines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

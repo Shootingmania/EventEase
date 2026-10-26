@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>EventEase - AI Event Planning Assistant</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #fcf9f8;
+      color: #1b1c1c;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+    main > :first-child {
+      margin-top: 0 !important;
+    }
+    main > :last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#593c00",
+          "on-tertiary": "#ffffff",
+          "primary-fixed": "#ffd9df",
+          "on-primary": "#ffffff",
+          "inverse-surface": "#303030",
+          "on-primary-container": "#ff8aa4",
+          "on-secondary-container": "#007166",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-high": "#eae7e7",
+          "on-secondary-fixed-variant": "#005048",
+          "on-background": "#1b1c1c",
+          "tertiary-fixed": "#ffdead",
+          "error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#81233f",
+          "background": "#fcf9f8",
+          "surface-container-highest": "#e4e2e1",
+          "secondary-fixed-dim": "#6fd8c8",
+          "on-secondary-fixed": "#00201c",
+          "outline-variant": "#dbc0c4",
+          "tertiary-fixed-dim": "#ffba3b",
+          "on-error": "#ffffff",
+          "surface-variant": "#e4e2e1",
+          "secondary-container": "#8cf5e4",
+          "on-tertiary-fixed": "#281900",
+          "secondary-fixed": "#8cf5e4",
+          "on-surface-variant": "#554245",
+          "surface-dim": "#dcd9d9",
+          "on-secondary": "#ffffff",
+          "inverse-on-surface": "#f3f0f0",
+          "on-tertiary-fixed-variant": "#604100",
+          "on-tertiary-container": "#e6a100",
+          "primary-fixed-dim": "#ffb1c0",
+          "primary": "#5c0325",
+          "primary-container": "#7a1e3a",
+          "on-error-container": "#93000a",
+          "surface-container": "#f0eded",
+          "on-surface": "#1b1c1c",
+          "surface-tint": "#a03b56",
+          "surface-bright": "#fcf9f8",
+          "inverse-primary": "#ffb1c0",
+          "error": "#ba1a1a",
+          "surface": "#fcf9f8",
+          "outline": "#887175",
+          "on-primary-fixed": "#3f0016",
+          "surface-container-low": "#f6f3f2",
+          "tertiary": "#3d2700",
+          "secondary": "#006a60"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin-lg": "3rem",
+          "gutter": "1rem",
+          "gutter-lg": "2rem",
+          "margin": "1rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "gutter-md": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin-md": "2rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Playfair Display"],
+          "label-md": ["Inter"],
+          "currency-display": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-md": ["Playfair Display"],
+          "headline-lg-mobile": ["Playfair Display"],
+          "body-sm": ["Inter"],
+          "label-lg": ["Inter"],
+          "title-lg": ["Inter"],
+          "body-lg": ["Inter"],
+          "display-lg-mobile": ["Playfair Display"],
+          "display-lg": ["Playfair Display"],
+          "headline-lg": ["Playfair Display"],
+          "title-md": ["Inter"]
+        },
+        "fontSize": {
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+          "currency-display": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+          "headline-lg-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "600"}],
+          "body-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "title-lg": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- ==================== 1. TOP NAVIGATION WITH WIZARD BAR ==================== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40 shadow-sm">
+<div class="h-28 flex flex-col justify-between">
+<!-- Primary Bar -->
+<div class="max-w-7xl mx-auto w-full h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Logo + Tagline -->
+<a class="flex items-center gap-3 group" data-path="home" href="#">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight">EventEase</span>
+<span class="font-label-md text-[10px] text-on-surface-variant tracking-wider uppercase">AI Event Planning Assistant</span>
+</div>
+</a>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 xl:gap-2" data-active-classes="bg-surface-container text-primary font-label-lg shadow-xs">
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="how-it-works" href="#how-it-works">How it works</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="event-types" href="#event-types">Event types</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="features" href="#features">Features</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="sample-plan" href="#sample-plan">Sample plan</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="testimonials" href="#testimonials">Testimonials</a>
+</nav>
+<!-- Right Action Group -->
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/60 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span>Bengaluru / Mumbai</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</div>
+<a class="hidden md:inline-flex items-center px-4 py-2 rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-container transition-all" data-path="sign-in" href="#">Sign in</a>
+<a class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all hover:shadow-md" data-path="step-4-set-the-mood" href="#step-4">Start Planning</a>
+</div>
+</div>
+<!-- Wizard Sub-Header / Step Progress Bar -->
+<div class="w-full bg-surface-container-low/80 border-t border-outline-variant/30 py-1.5 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<!-- Breadcrumbs & Step Indicator -->
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant overflow-x-auto py-0.5">
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-1-event-basics" href="#">1. Basics</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-2-date-and-venue" href="#">2. Date &amp; City</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-3-whos-coming" href="#">3. Who's coming?</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="font-label-lg text-primary flex items-center gap-1.5 whitespace-nowrap font-semibold bg-surface-container px-2.5 py-0.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Step 4: Set the mood (Rituals &amp; Ambience)
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="opacity-60 whitespace-nowrap">5. Review &amp; Budget</span>
+</div>
+<!-- Progress indicator -->
+<div class="hidden md:flex items-center gap-2 font-label-md text-xs text-on-surface-variant font-medium">
+<span>Step 4 of 5 (80%)</span>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-28"><div class="flex flex-col w-full">
+<!-- Top Celebration Banner / Master Controls -->
+<section class="w-full bg-surface-container-low/70 py-6 px-4 sm:px-6 lg:px-8 border-b border-outline-variant/30">
+<div class="max-w-7xl mx-auto flex flex-col gap-5">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary/10 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">cake</span>
+              1st Birthday Milestone
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-xs">auto_awesome</span>
+              AI Blueprint Optimized
+            </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Riya's 1st Birthday Celebration Plan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Multi-generational celebratory blueprint balanced for toddler comfort &amp; elder hospitality.</p>
+</div>
+<!-- Master Actions -->
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-primary border border-outline-variant/60 font-label-lg text-label-lg hover:bg-surface-container transition-all shadow-xs cursor-pointer" type="button">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+<span>Download PDF</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest text-primary border border-outline-variant/60 font-label-lg text-label-lg hover:bg-surface-container transition-all shadow-xs cursor-pointer" type="button">
+<span class="material-symbols-outlined text-lg">share</span>
+<span>Share Plan</span>
+</button>
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-all shadow-sm cursor-pointer" type="button">
+<span class="material-symbols-outlined text-lg">edit</span>
+<span>Edit Answers</span>
+</button>
+</div>
+</div>
+<!-- Quick Telemetry Chips -->
+<div class="flex flex-wrap items-center gap-2 pt-2 border-t border-outline-variant/20 font-label-md text-label-md text-on-surface-variant">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 shadow-xs">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+          Indiranagar Club Lawn, Bengaluru
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 shadow-xs">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">group</span>
+          80 Guests (22 Kids • 46 Adults • 12 Seniors)
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 shadow-xs font-semibold text-primary">
+<span class="material-symbols-outlined text-tertiary text-sm">payments</span>
+          ₹2,00,000 Total Budget
+        </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 shadow-xs text-secondary font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span>
+          18 Days Remaining • Sunday, 24 Aug 2025
+        </span>
+</div>
+</div>
+</section>
+<!-- Interactive Tab Navigation -->
+<section class="sticky top-28 z-40 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<nav class="flex items-center gap-2 overflow-x-auto py-2.5 no-scrollbar" id="tab-buttons" role="tablist">
+<button aria-selected="true" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer bg-primary text-on-primary shadow-xs" data-tab="overview" role="tab">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+          Overview
+        </button>
+<button aria-selected="false" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container" data-tab="budget" role="tab">
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+          Budget Split
+        </button>
+<button aria-selected="false" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container" data-tab="vendors" role="tab">
+<span class="material-symbols-outlined text-lg">storefront</span>
+          Vendors (Telemetry)
+        </button>
+<button aria-selected="false" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container" data-tab="ideas" role="tab">
+<span class="material-symbols-outlined text-lg">palette</span>
+          Themes &amp; Ideas
+        </button>
+<button aria-selected="false" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container" data-tab="timeline" role="tab">
+<span class="material-symbols-outlined text-lg">event_repeat</span>
+          Timeline
+        </button>
+<button aria-selected="false" class="tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container" data-tab="checklist" role="tab">
+<span class="material-symbols-outlined text-lg">checklist</span>
+          Checklist
+          <span class="ml-1 px-1.5 py-0.2 rounded-full text-xs bg-secondary/15 text-secondary font-bold">14/17</span>
+</button>
+</nav>
+</div>
+</section>
+<!-- Main Content Container with Tabs -->
+<div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
+<!-- ==================== TAB 1: OVERVIEW ==================== -->
+<div class="tab-content flex flex-col gap-8" id="tab-overview">
+<!-- 4 Top Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="rounded-2xl bg-surface-container-lowest p-5 border border-outline-variant/40 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Budget</span>
+<div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">payments</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="font-currency-display text-currency-display text-primary">₹2,00,000</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 mt-1">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+              ₹1.85L allocated • ₹15k buffer
+            </div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="rounded-2xl bg-surface-container-lowest p-5 border border-outline-variant/40 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Guest Footfall</span>
+<div class="w-9 h-9 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">groups_3</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="font-currency-display text-currency-display text-primary">80 Guests</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="font-semibold text-primary">22</span> Kids •
+              <span class="font-semibold text-primary">46</span> Adults •
+              <span class="font-semibold text-primary">12</span> Seniors
+            </div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="rounded-2xl bg-surface-container-lowest p-5 border border-outline-variant/40 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Auspicious Slot</span>
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">nest_clock_farsight_analog</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="font-title-lg text-title-lg font-bold text-primary">Sun, 24 Aug 2025</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-1">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-tertiary-fixed/60 text-on-tertiary-fixed text-xs font-semibold">Cake Muhurat: 5:15 PM</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="rounded-2xl bg-surface-container-lowest p-5 border border-outline-variant/40 shadow-xs flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Plan Readiness</span>
+<div class="w-9 h-9 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">task_alt</span>
+</div>
+</div>
+<div class="mt-4">
+<div class="flex items-baseline justify-between">
+<span class="font-currency-display text-currency-display text-secondary">82%</span>
+<span class="font-label-md text-label-md text-on-surface-variant">14 of 17 done</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden mt-2">
+<div class="bg-secondary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Layout: Chart + AI Concierge -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left: Donut Chart & Breakdown -->
+<div class="lg:col-span-8 rounded-2xl bg-surface-container-lowest p-6 sm:p-8 border border-outline-variant/40 shadow-xs">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Budget Distribution Architecture</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Optimized for child play security, wholesome Satvik dining &amp; photographic memories.</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container font-label-md text-label-md text-primary font-semibold self-start sm:self-auto">
+              Total ₹2,00,000
+            </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+<!-- SVG Donut Chart with Cutout -->
+<div class="md:col-span-5 flex flex-col items-center justify-center relative">
+<div class="relative w-56 h-56">
+<!-- SVG Donut Chart -->
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Catering 35% (stroke-dasharray: 35 65, offset: 0) -->
+<circle class="transition-all duration-500 hover:opacity-90" cx="50" cy="50" fill="transparent" r="38" stroke="#5c0325" stroke-dasharray="35 65" stroke-dashoffset="0" stroke-width="14"></circle>
+<!-- Venue & Decor 32% (stroke-dasharray: 32 68, offset: -35) -->
+<circle class="transition-all duration-500 hover:opacity-90" cx="50" cy="50" fill="transparent" r="38" stroke="#006a60" stroke-dasharray="32 68" stroke-dashoffset="-35" stroke-width="14"></circle>
+<!-- Photography 15% (stroke-dasharray: 15 85, offset: -67) -->
+<circle class="transition-all duration-500 hover:opacity-90" cx="50" cy="50" fill="transparent" r="38" stroke="#ffba3b" stroke-dasharray="15 85" stroke-dashoffset="-67" stroke-width="14"></circle>
+<!-- Soft Play 10% (stroke-dasharray: 10 90, offset: -82) -->
+<circle class="transition-all duration-500 hover:opacity-90" cx="50" cy="50" fill="transparent" r="38" stroke="#81233f" stroke-dasharray="10 90" stroke-dashoffset="-82" stroke-width="14"></circle>
+<!-- Favors 8% (stroke-dasharray: 8 92, offset: -92) -->
+<circle class="transition-all duration-500 hover:opacity-90" cx="50" cy="50" fill="transparent" r="38" stroke="#e6a100" stroke-dasharray="8 92" stroke-dashoffset="-92" stroke-width="14"></circle>
+</svg>
+<!-- Center cutout circle overlay -->
+<div class="absolute inset-0 m-auto w-28 h-28 rounded-full bg-surface-container-lowest shadow-inner flex flex-col items-center justify-center text-center p-2">
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">Reserve</span>
+<span class="font-title-md text-title-md font-bold text-primary">₹15,000</span>
+<span class="text-[10px] text-secondary font-medium">Contingency</span>
+</div>
+</div>
+</div>
+<!-- Legend List -->
+<div class="md:col-span-7 flex flex-col gap-3">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-primary flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-title-md text-sm font-semibold text-on-surface">Satvik Food &amp; Tier Cake</span>
+<span class="font-body-sm text-xs text-on-surface-variant">Live counters + organic toddler bakes</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-sm text-primary font-bold">₹70,000</div>
+<div class="text-xs text-on-surface-variant font-medium">35%</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-secondary flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-title-md text-sm font-semibold text-on-surface">Venue &amp; Pastel Balloon Decor</span>
+<span class="font-body-sm text-xs text-on-surface-variant">Club lawn + biodegradable arch</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-sm text-primary font-bold">₹64,000</div>
+<div class="text-xs text-on-surface-variant font-medium">32%</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-[#ffba3b] flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-title-md text-sm font-semibold text-on-surface">Photography &amp; Moments</span>
+<span class="font-body-sm text-xs text-on-surface-variant">4 hrs baby candid + photobook</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-sm text-primary font-bold">₹30,000</div>
+<div class="text-xs text-on-surface-variant font-medium">15%</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-primary-container flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-title-md text-sm font-semibold text-on-surface">Soft Play &amp; Entertainment</span>
+<span class="font-body-sm text-xs text-on-surface-variant">Ball pit, foam gym &amp; bubble artist</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-sm text-primary font-bold">₹20,000</div>
+<div class="text-xs text-on-surface-variant font-medium">10%</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<span class="w-3.5 h-3.5 rounded-full bg-[#e6a100] flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-title-md text-sm font-semibold text-on-surface">Return Favors</span>
+<span class="font-body-sm text-xs text-on-surface-variant">Montessori wooden toys + sweets</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-lg text-sm text-primary font-bold">₹16,000</div>
+<div class="text-xs text-on-surface-variant font-medium">8%</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: AI Concierge Card -->
+<div class="lg:col-span-4 flex flex-col gap-5">
+<div class="rounded-2xl bg-gradient-to-br from-surface-container-lowest to-surface-container-low p-6 border border-outline-variant/50 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-2.5 text-primary mb-4">
+<div class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-lg">psychology</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md font-bold text-primary">EventEase AI Concierge</h3>
+<span class="font-label-md text-xs text-on-surface-variant">Real-time Toddler-Safe Guardrails</span>
+</div>
+</div>
+<div class="flex flex-col gap-3.5">
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-start gap-3 shadow-xs">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">bedtime</span>
+<div>
+<h4 class="font-title-md text-sm font-bold text-primary">Riya's Nap Window Locked</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Cake cutting placed exactly at 5:15 PM post 2:00–3:30 PM sleep window to prevent overstimulation.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-start gap-3 shadow-xs">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">volume_down</span>
+<div>
+<h4 class="font-title-md text-sm font-bold text-primary">Decibel Guard Under 70 dB</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Acoustics optimized for delicate toddler eardrums and pleasant conversation for the 12 visiting grandparents.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 flex items-start gap-3 shadow-xs">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5">child_care</span>
+<div>
+<h4 class="font-title-md text-sm font-bold text-primary">Dedicated Pram Bay &amp; Nursing Suite</h4>
+<p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Indiranagar club's air-conditioned private lounge mapped for feeding, diaper changing, and quiet rest.</p>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="font-label-md text-xs text-on-surface-variant">Last AI Audit: 12 mins ago</span>
+<button class="text-xs font-label-lg text-primary font-bold flex items-center gap-1 hover:underline cursor-pointer" type="button">
+                Ask AI Assistant <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Quick Weather & Venue Card -->
+<div class="rounded-2xl bg-surface-container-lowest p-5 border border-outline-variant/40 shadow-xs flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/50 flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-xl">partly_cloudy_day</span>
+</div>
+<div>
+<div class="font-title-md text-sm font-bold text-primary">Bengaluru Sundowner Lawn</div>
+<div class="font-body-sm text-xs text-on-surface-variant">24°C Pleasant breeze • Covered Verandah backup ready</div>
+</div>
+</div>
+<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-secondary/10 text-secondary">Verified</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== TAB 2: BUDGET ==================== -->
+<div class="tab-content hidden flex flex-col gap-6" id="tab-budget">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Itemized Budget Allocation</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Precision breakdown across vendors with 100% transparent Lakh/Thousand notation.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="px-4 py-2 rounded-xl bg-surface-container-low border border-outline-variant/40 text-right">
+<span class="font-label-md text-xs text-on-surface-variant block">Total Envelope</span>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹2,00,000</span>
+</div>
+<button class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-xs hover:bg-primary-container cursor-pointer transition-all" type="button">
+<span class="material-symbols-outlined text-base">add</span>
+            Add Expense
+          </button>
+</div>
+</div>
+<!-- Budget Table -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/80 border-b border-outline-variant/30 text-on-surface-variant font-label-md text-label-md">
+<th class="py-3.5 px-4 sm:px-6 font-semibold">Category &amp; Deliverables</th>
+<th class="py-3.5 px-4 font-semibold text-center">% of Total</th>
+<th class="py-3.5 px-4 font-semibold text-right">Allocated</th>
+<th class="py-3.5 px-4 font-semibold">Utilization Status</th>
+<th class="py-3.5 px-4 sm:px-6 font-semibold">Notes &amp; Scope</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Satvik Food &amp; Live Counters</div>
+<div class="text-xs text-on-surface-variant">80 pax buffet + toddlers corner</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">30%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹60,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="text-xs font-semibold text-primary">100% Locked</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  Finger foods for toddlers + Jain Satvik spread for elders. Live dosas &amp; pasta.
+                </td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Custom Themed 2-Tier Cake</div>
+<div class="text-xs text-on-surface-variant">3.5 kg organic vanilla &amp; strawberry</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">5%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹10,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 80%;"></div>
+</div>
+<span class="text-xs font-semibold text-secondary">Quote Approved</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  Artisanal organic baker in Koramangala. Includes edible butterfly toppers.
+                </td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Pastel Floral &amp; Balloon Arch</div>
+<div class="text-xs text-on-surface-variant">Entryway + stage backdrop + table centers</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">22%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹44,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="text-xs font-semibold text-primary">Deposit Paid</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  Organic biodegradable balloons, fresh white daisies &amp; pastel drapery.
+                </td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Club Lawn &amp; Covered Verandah</div>
+<div class="text-xs text-on-surface-variant">Indiranagar Club Lawn space fee</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">10%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹20,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 100%;"></div>
+</div>
+<span class="text-xs font-semibold text-primary">Receipt Issued</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  Subsidized member tariff applied. Includes sound system license &amp; chairs.
+                </td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Candid Baby &amp; Family Photography</div>
+<div class="text-xs text-on-surface-variant">Lead photographer + video reel specialist</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">15%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹30,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 60%;"></div>
+</div>
+<span class="text-xs font-semibold text-secondary">Token Advance</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  4 hours coverage, 250 edited high-res photos, 1 premium hardbound album + 2 Instagram reels.
+                </td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Toddler Soft Play Arena &amp; Bubble Artist</div>
+<div class="text-xs text-on-surface-variant">Dedicated play attendant included</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">10%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹20,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 50%;"></div>
+</div>
+<span class="text-xs font-semibold text-secondary">Slot Booked</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  200 sq ft padded foam matting, slide, pastel ball pit &amp; 45-min non-toxic giant bubble show.
+                </td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-semibold text-primary">Personalized Sensory Return Favors</div>
+<div class="text-xs text-on-surface-variant">For 22 kids + festive hampers for elders</div>
+</td>
+<td class="py-4 px-4 text-center font-semibold text-on-surface">8%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-primary">₹16,000</td>
+<td class="py-4 px-4">
+<div class="flex items-center gap-2">
+<div class="w-24 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-surface-container-highest h-full rounded-full" style="width: 25%;"></div>
+</div>
+<span class="text-xs font-semibold text-on-surface-variant">Samples Verified</span>
+</div>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant">
+                  Handcrafted wooden Montessori animal puzzle sets, dry fruit jars &amp; jute tote bags.
+                </td>
+</tr>
+<!-- Highlighted Contingency Row -->
+<tr class="bg-tertiary-fixed/30 border-l-4 border-l-tertiary-fixed-dim">
+<td class="py-4 px-4 sm:px-6">
+<div class="font-title-md text-sm font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary text-base">shield</span>
+                    Contingency &amp; Emergency Buffer
+                  </div>
+<div class="text-xs text-on-surface-variant">Unallocated cash reserve for day-of additions</div>
+</td>
+<td class="py-4 px-4 text-center font-bold text-tertiary">7.5%</td>
+<td class="py-4 px-4 text-right font-title-md text-sm font-bold text-tertiary">₹15,000</td>
+<td class="py-4 px-4">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-xs font-bold">
+                    Safe Reserve
+                  </span>
+</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-on-surface-variant font-medium">
+                  Extra lawn heaters if chilly, spontaneous generator fuel backup, or extra last-minute guest plates.
+                </td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-low font-title-md text-sm font-bold text-primary border-t border-outline-variant/40">
+<td class="py-4 px-4 sm:px-6">Grand Total accounted for</td>
+<td class="py-4 px-4 text-center">100%</td>
+<td class="py-4 px-4 text-right text-base">₹2,00,000</td>
+<td class="py-4 px-4 text-xs font-normal text-on-surface-variant">Fully balanced</td>
+<td class="py-4 px-4 sm:px-6 text-xs text-secondary font-medium">✨ Zero deficit projected</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+</div>
+<!-- ==================== TAB 3: VENDORS ==================== -->
+<div class="tab-content hidden flex flex-col gap-6" id="tab-vendors">
+<div class="p-4 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-2xl flex-shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+<strong class="font-semibold text-secondary">Bengaluru Market Telemetry (2025 Benchmarks):</strong> Typical price corridors compiled from recent celebrations in Indiranagar, Koramangala &amp; Whitefield.
+        </p>
+</div>
+<!-- Telemetry Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Vendor Card 1 -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-xs text-secondary font-bold uppercase">Catering &amp; Bakery</span>
+<h3 class="font-title-lg text-title-lg text-primary font-bold mt-0.5">Satvik Catering &amp; Custom Cake</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-xs font-semibold text-primary">80 Pax</span>
+</div>
+<!-- Price Markers -->
+<div class="grid grid-cols-3 gap-2 mt-5 text-center">
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Target Negotiation</span>
+<span class="font-title-md text-sm font-bold text-secondary">₹66,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/10 border border-primary/20">
+<span class="text-[11px] text-primary block font-medium">Expected Quote</span>
+<span class="font-title-md text-sm font-bold text-primary">₹70,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Walk-away Price</span>
+<span class="font-title-md text-sm font-bold text-error">₹74,000</span>
+</div>
+</div>
+<!-- Visual Bar -->
+<div class="mt-4">
+<div class="flex justify-between text-xs text-on-surface-variant mb-1 font-mono">
+<span>Range: ₹65,000</span>
+<span>Max: ₹85,000</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute bg-secondary h-full rounded-full" style="left: 15%; width: 50%;"></div>
+<div class="absolute w-2 h-full bg-primary" style="left: 40%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-on-surface-variant mt-1.5">
+<span class="text-secondary font-medium">● Sweet Spot: ₹66k - ₹70k</span>
+<span>Current Status: Quote Approved</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Vendor: Rasoi Gourmet Bengaluru</span>
+<button class="text-xs font-label-lg text-primary font-bold hover:underline cursor-pointer" type="button">View Agreement →</button>
+</div>
+</div>
+<!-- Vendor Card 2 -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-xs text-secondary font-bold uppercase">Aesthetic Decor</span>
+<h3 class="font-title-lg text-title-lg text-primary font-bold mt-0.5">Lawn Decor &amp; Balloon Architecture</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-xs font-semibold text-primary">Stage + Arch</span>
+</div>
+<!-- Price Markers -->
+<div class="grid grid-cols-3 gap-2 mt-5 text-center">
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Target Negotiation</span>
+<span class="font-title-md text-sm font-bold text-secondary">₹40,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/10 border border-primary/20">
+<span class="text-[11px] text-primary block font-medium">Expected Quote</span>
+<span class="font-title-md text-sm font-bold text-primary">₹44,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Walk-away Price</span>
+<span class="font-title-md text-sm font-bold text-error">₹48,000</span>
+</div>
+</div>
+<!-- Visual Bar -->
+<div class="mt-4">
+<div class="flex justify-between text-xs text-on-surface-variant mb-1 font-mono">
+<span>Range: ₹40,000</span>
+<span>Max: ₹55,000</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute bg-secondary h-full rounded-full" style="left: 10%; width: 45%;"></div>
+<div class="absolute w-2 h-full bg-primary" style="left: 32%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-on-surface-variant mt-1.5">
+<span class="text-secondary font-medium">● Sweet Spot: ₹42,000</span>
+<span>Status: Deposit Paid</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Vendor: Bloom &amp; Berry Decors</span>
+<button class="text-xs font-label-lg text-primary font-bold hover:underline cursor-pointer" type="button">View Moodboard →</button>
+</div>
+</div>
+<!-- Vendor Card 3 -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-xs text-secondary font-bold uppercase">Photography &amp; Reels</span>
+<h3 class="font-title-lg text-title-lg text-primary font-bold mt-0.5">Toddler &amp; Candid Photographer</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-xs font-semibold text-primary">4h Coverage</span>
+</div>
+<!-- Price Markers -->
+<div class="grid grid-cols-3 gap-2 mt-5 text-center">
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Target Negotiation</span>
+<span class="font-title-md text-sm font-bold text-secondary">₹27,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/10 border border-primary/20">
+<span class="text-[11px] text-primary block font-medium">Expected Quote</span>
+<span class="font-title-md text-sm font-bold text-primary">₹30,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Walk-away Price</span>
+<span class="font-title-md text-sm font-bold text-error">₹33,000</span>
+</div>
+</div>
+<!-- Visual Bar -->
+<div class="mt-4">
+<div class="flex justify-between text-xs text-on-surface-variant mb-1 font-mono">
+<span>Range: ₹28,000</span>
+<span>Max: ₹38,000</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute bg-secondary h-full rounded-full" style="left: 10%; width: 40%;"></div>
+<div class="absolute w-2 h-full bg-primary" style="left: 30%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-on-surface-variant mt-1.5">
+<span class="text-secondary font-medium">● Sweet Spot: ₹30,000 (Incl. Reel)</span>
+<span>Status: Advance Confirmed</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Vendor: Little Footprints Studio</span>
+<button class="text-xs font-label-lg text-primary font-bold hover:underline cursor-pointer" type="button">Sample Reel →</button>
+</div>
+</div>
+<!-- Vendor Card 4 -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-md text-xs text-secondary font-bold uppercase">Kids Engagement</span>
+<h3 class="font-title-lg text-title-lg text-primary font-bold mt-0.5">Soft Play Arena &amp; Bubble Artist</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-xs font-semibold text-primary">Ages 1 - 6</span>
+</div>
+<!-- Price Markers -->
+<div class="grid grid-cols-3 gap-2 mt-5 text-center">
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Target Negotiation</span>
+<span class="font-title-md text-sm font-bold text-secondary">₹18,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-primary/10 border border-primary/20">
+<span class="text-[11px] text-primary block font-medium">Expected Quote</span>
+<span class="font-title-md text-sm font-bold text-primary">₹20,000</span>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-on-surface-variant block">Walk-away Price</span>
+<span class="font-title-md text-sm font-bold text-error">₹22,000</span>
+</div>
+</div>
+<!-- Visual Bar -->
+<div class="mt-4">
+<div class="flex justify-between text-xs text-on-surface-variant mb-1 font-mono">
+<span>Range: ₹18,000</span>
+<span>Max: ₹25,000</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden relative">
+<div class="absolute bg-secondary h-full rounded-full" style="left: 10%; width: 48%;"></div>
+<div class="absolute w-2 h-full bg-primary" style="left: 33%;"></div>
+</div>
+<div class="flex justify-between items-center text-[11px] text-on-surface-variant mt-1.5">
+<span class="text-secondary font-medium">● Sweet Spot: ₹19,500</span>
+<span>Status: Slot Hold until Aug 17</span>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-xs text-on-surface-variant">Vendor: TinyTribe Play Rentals</span>
+<button class="text-xs font-label-lg text-primary font-bold hover:underline cursor-pointer" type="button">Safety Specs →</button>
+</div>
+</div>
+</div>
+<!-- Negotiation Playbook Accordion -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">tips_and_updates</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Negotiation Tips &amp; Family Playbook</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<span class="inline-flex items-center gap-1 font-label-md text-xs font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-sm">savings</span>
+                Catering Synergy
+              </span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Bundle the tier cake and dessert table with the caterer's cutlery &amp; steward team to formally waive cake-cutting and serving corkage fees (saves ₹2,500).
+              </p>
+</div>
+<span class="text-[11px] font-semibold text-secondary mt-3">Estimated savings: ₹2,500</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<span class="inline-flex items-center gap-1 font-label-md text-xs font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-sm">wb_sunny</span>
+                Balloon Heat Defense
+              </span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Insist the decorator completes the lawn arch installation strictly by 1:30 PM. Heat before 3 PM deflates outdoor balloons; early shade setup ensures zero punctures.
+              </p>
+</div>
+<span class="text-[11px] font-semibold text-secondary mt-3">Quality Assurance Guard</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col justify-between">
+<div>
+<span class="inline-flex items-center gap-1 font-label-md text-xs font-bold text-primary mb-1">
+<span class="material-symbols-outlined text-sm">video_file</span>
+                Raw Photo Footage
+              </span>
+<p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+                Insert a clause requesting the complete camera dump of raw unedited footage on an external SSD within 48 hours, at ₹0 extra fee.
+              </p>
+</div>
+<span class="text-[11px] font-semibold text-secondary mt-3">Estimated savings: ₹4,000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== TAB 4: IDEAS ==================== -->
+<div class="tab-content hidden flex flex-col gap-8" id="tab-ideas">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Aesthetic Themes for Multi-Generations</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Calibrated for sensory comfort: gentle on 1-year-old eyes and deeply dignified for attending grandparents.</p>
+</div>
+<!-- Theme Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Theme 1 (Selected) -->
+<div class="rounded-2xl bg-surface-container-lowest border-2 border-primary shadow-md overflow-hidden flex flex-col justify-between relative">
+<div class="absolute top-3 right-3 z-10 px-2.5 py-1 rounded-full bg-primary text-on-primary font-label-md text-xs font-semibold shadow-xs">
+            ★ Selected Theme
+          </div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A whimsical pastel garden birthday setup on an open green lawn with soft lavender, pale blush pink, and cream balloon archways, low wooden picnic tables with cushions, warm fairy lights, and gentle buttercup flowers under soft golden afternoon sunlight in Bengaluru." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_OqzbKHy4ckvFZmt2lFUpF0Cmym1sKncXI6ostF10Ecgk6FdHKXygJSp0UZQQCmd_anGGhSijSHBcwaK5yqOrE6B1ajmlf3qvxaVvYPXEsTcMboSUou5ywnCeSH-GjmEASvqkUATfhmCAJ5mYudxDiCIMK9sZkd7obRtDC53AKkwHl_wwIB-cOqnZ4WgJtKE2MNwLS3kYdIMyGx-3u7OVUJYIB8VsX3HknUua8TV0wLDIvB32Ucpc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div>
+<h3 class="font-headline-sm text-lg font-bold text-primary">Pastel Meadow &amp; Butterflies</h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+                Whimsical garden picnic with non-toxic foam matting, fairy-lit ficus trees, and organic biodegradable pastel arches. Soft on toddler sightlines.
+              </p>
+</div>
+<!-- Color Palette Swatches -->
+<div>
+<span class="font-label-md text-[11px] uppercase tracking-wider text-on-surface-variant block mb-2 font-semibold">Curated Palette</span>
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-[#E2E8DF] shadow-xs" title="Sage Cream"></span>
+<span class="w-7 h-7 rounded-full bg-[#E8DCF0] shadow-xs" title="Soft Lavender"></span>
+<span class="w-7 h-7 rounded-full bg-[#FCE6E8] shadow-xs" title="Blush Petal"></span>
+<span class="w-7 h-7 rounded-full bg-[#F3E5AB] shadow-xs" title="Warm Champagne Gold"></span>
+<span class="text-xs font-mono text-on-surface-variant ml-1 font-semibold">#E8DCF0</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-primary text-on-primary font-label-lg text-xs font-bold text-center cursor-default" type="button">
+              Current Active Blueprint
+            </button>
+</div>
+</div>
+<!-- Theme 2 -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs overflow-hidden flex flex-col justify-between hover:border-outline-variant transition-all">
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A modern cute baby jungle safari party decor with eucalyptus green garlands, cute minimalist wooden safari animals, marigold and biscuit cream balloons, and wooden dessert platters under a covered lawn verandah." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLplP7EdEPWqa98Jai78Ye0HwliUrI-Ek_xtulC1726qdTqo48i96WkuxLlaUV7tZwTMQV1zFh5zG-wZWVreLVzN2uaRvwUi6qFhZFuwFmV-CzB7En_b844yRkz15KAc3Eo7aOprUn0LWkTnk6FRAiqILptDNche45Xgr455KdFColLWKimspRwV9hk4PNmNHiHonppIjWr5gHNIGI6WlYuLOTJZdysHgFNcpU4v4Q9zQPlC64VgMR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div>
+<h3 class="font-headline-sm text-lg font-bold text-primary">Little Royal Jungle Safari</h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+                Tasteful woodland vibe featuring hand-painted wooden animal silhouettes, linen drapery, eucalyptus greenery runners, and miniature animal cupcakes.
+              </p>
+</div>
+<div>
+<span class="font-label-md text-[11px] uppercase tracking-wider text-on-surface-variant block mb-2 font-semibold">Curated Palette</span>
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-[#556B2F] shadow-xs" title="Olive Green"></span>
+<span class="w-7 h-7 rounded-full bg-[#E5A93C] shadow-xs" title="Warm Marigold"></span>
+<span class="w-7 h-7 rounded-full bg-[#F4ECD8] shadow-xs" title="Biscuit Cream"></span>
+<span class="w-7 h-7 rounded-full bg-[#D4AF37] shadow-xs" title="Safari Gold"></span>
+<span class="text-xs font-mono text-on-surface-variant ml-1 font-semibold">#556B2F</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-surface-container-low text-primary font-label-lg text-xs font-bold text-center hover:bg-surface-container cursor-pointer transition-colors" type="button">
+              Switch to This Theme
+            </button>
+</div>
+</div>
+<!-- Theme 3 -->
+<div class="rounded-2xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs overflow-hidden flex flex-col justify-between hover:border-outline-variant transition-all">
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An auspicious traditional Indian first birthday Utsav theme setup with fragrant yellow marigold flower garlands, fresh jasmine torans, polished brass urlis filled with water and floating candles, raw silk ivory cushions, and a traditional carved wooden cradle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8ygNfcad__TdWX534xphQG0HoL_btfUakyI5KtAWaZeBtcq0XHadpJjBSEtxNEOoaLCBvTyM7lg4waOoD9zXyWc-nXFUpEvKVY4uygYMjbJqS2TbHYySMKy4k_Gh_wY29jUyigYFjAFSTGDsXAdfje_pHLH_rqZi4hw7-QgSNIWwVZTGNb9ME41VBS-mpmyRC_NBF_gxUELabscFZvoPqrbgJ1MZV6DbjRzsa2gj77UfP7XvLIX4J"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+</div>
+<div class="p-6 flex flex-col gap-4">
+<div>
+<h3 class="font-headline-sm text-lg font-bold text-primary">Auspicious Traditional Utsav</h3>
+<p class="font-body-sm text-xs text-on-surface-variant mt-1.5 leading-relaxed">
+                Fresh fragrant jasmine and marigold torans, polished brass urlis with floating lotus flowers, antique cradle display, and live gentle flute strains.
+              </p>
+</div>
+<div>
+<span class="font-label-md text-[11px] uppercase tracking-wider text-on-surface-variant block mb-2 font-semibold">Curated Palette</span>
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-full bg-[#F2A900] shadow-xs" title="Festive Marigold"></span>
+<span class="w-7 h-7 rounded-full bg-[#7A1E3A] shadow-xs" title="Deep Crimson"></span>
+<span class="w-7 h-7 rounded-full bg-[#FFF9F2] shadow-xs" title="Raw Silk Ivory"></span>
+<span class="w-7 h-7 rounded-full bg-[#B8860B] shadow-xs" title="Temple Brass"></span>
+<span class="text-xs font-mono text-on-surface-variant ml-1 font-semibold">#F2A900</span>
+</div>
+</div>
+<button class="w-full py-2.5 rounded-xl bg-surface-container-low text-primary font-label-lg text-xs font-bold text-center hover:bg-surface-container cursor-pointer transition-colors" type="button">
+              Switch to This Theme
+            </button>
+</div>
+</div>
+</div>
+<!-- Recommended Add-ons -->
+<div class="rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Recommended Add-Ons for Toddler Comfort</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Toddler Foam Ball Pit &amp; Slide</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Zero sharp corners, sanitized.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[11px] font-bold">Must Have</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Diaper Changing &amp; Feeding Pod</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Air-conditioned privacy tent.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[11px] font-bold">Must Have</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Live Giant Bubble Station</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Non-toxic child-safe soap mix.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-label-md text-[11px] font-bold">Nice to Have</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Polaroid Guestbook Stand</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Elders write handwritten blessings.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-label-md text-[11px] font-bold">Nice to Have</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Mini Organic Fruit Puree Bar</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Avocado, banana &amp; apple bowls.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary font-label-md text-[11px] font-bold">Nice to Have</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low flex items-center justify-between border border-outline-variant/30">
+<div>
+<h4 class="font-title-md text-sm font-semibold text-primary">Hand Sanitizer &amp; Wet Wipe Caddies</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Stationed at every dining table.</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-md text-[11px] font-bold">Must Have</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== TAB 5: TIMELINE ==================== -->
+<div class="tab-content hidden flex flex-col gap-8" id="tab-timeline">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Reverse Planning Master Timeline</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Working backwards from 24 Aug 2025 with minute-by-minute Event Day choreo.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-secondary/10 text-secondary text-xs font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> 3 Milestones Remaining
+          </span>
+</div>
+</div>
+<!-- Timeline Split: Milestone Milestones (Past) & Day-of Schedule -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left: Month-by-month Milestones -->
+<div class="lg:col-span-5 rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs">
+<h3 class="font-title-lg text-title-lg text-primary font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">find_replace</span>
+            Preparation Milestones
+          </h3>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant/40">
+<!-- 3 Months Before -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px]">✓</span>
+<div class="flex items-baseline justify-between">
+<span class="font-title-md text-xs font-bold text-secondary uppercase">3 Months Before (May 2025)</span>
+<span class="text-[10px] text-on-surface-variant">Completed</span>
+</div>
+<h4 class="font-title-md text-sm font-semibold text-primary mt-0.5">Lock Date &amp; Club Venue Deposit</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Indiranagar club lawn booked with member privileges.</p>
+</div>
+<!-- 2 Months Before -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px]">✓</span>
+<div class="flex items-baseline justify-between">
+<span class="font-title-md text-xs font-bold text-secondary uppercase">2 Months Before (June 2025)</span>
+<span class="text-[10px] text-on-surface-variant">Completed</span>
+</div>
+<h4 class="font-title-md text-sm font-semibold text-primary mt-0.5">Satvik Catering Taste Test &amp; Photo Selection</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Sampled kid-friendly live counters; photographer deposit paid.</p>
+</div>
+<!-- 1 Month Before -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-secondary flex items-center justify-center text-on-secondary text-[10px]">✓</span>
+<div class="flex items-baseline justify-between">
+<span class="font-title-md text-xs font-bold text-secondary uppercase">1 Month Before (July 2025)</span>
+<span class="text-[10px] text-on-surface-variant">Completed</span>
+</div>
+<h4 class="font-title-md text-sm font-semibold text-primary mt-0.5">Theme Decor Locked &amp; WhatsApp Invites Sent</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Pastel meadow theme confirmed; 80 invites dispatched.</p>
+</div>
+<!-- 1 Week Before -->
+<div class="relative">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center text-on-primary text-[10px] animate-pulse">⚡</span>
+<div class="flex items-baseline justify-between">
+<span class="font-title-md text-xs font-bold text-primary uppercase">1 Week Before (17 Aug 2025)</span>
+<span class="text-[10px] text-primary font-bold">In Progress</span>
+</div>
+<h4 class="font-title-md text-sm font-semibold text-primary mt-0.5">Finalize Headcount &amp; Soft Play Delivery Slot</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Lock final 80-guest count with catering chef.</p>
+</div>
+<!-- Day Before -->
+<div class="relative opacity-80">
+<span class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-surface-container-highest border border-outline flex items-center justify-center text-[10px]">○</span>
+<div class="flex items-baseline justify-between">
+<span class="font-title-md text-xs font-bold text-on-surface-variant uppercase">Day Before (23 Aug 2025)</span>
+<span class="text-[10px] text-on-surface-variant">Upcoming</span>
+</div>
+<h4 class="font-title-md text-sm font-semibold text-on-surface mt-0.5">Pick Up Wooden Favors &amp; Reconfirm Cake</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Check delivery window (3:30 PM) with Koramangala baker.</p>
+</div>
+</div>
+</div>
+<!-- Right: Event Day Choreography -->
+<div class="lg:col-span-7 rounded-2xl bg-surface-container-lowest p-6 border border-outline-variant/40 shadow-xs">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-title-lg text-title-lg text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">schedule</span>
+              Event Day Schedule (Sunday, 24 Aug)
+            </h3>
+<span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-xs font-semibold">
+              4:00 PM – 8:30 PM
+            </span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">01:30 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Decorator Lawn Setup</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Pastel arch framing and shaded foam ball pit installation begins under verandah cover.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">03:30 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Cake Arrival &amp; Baby Nap Wrap</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Cake placed in air-conditioned clubhouse pantry. Riya wakes fresh from afternoon nap.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">04:30 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Guest Arrival &amp; Welcome Flute</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Tender coconut water, kokum spritzers and live flute melody for elder arrivals.</p>
+</div>
+</div>
+<!-- Muhurat Highlight Box -->
+<div class="flex items-start gap-4 p-3.5 rounded-xl bg-tertiary-fixed/40 border border-tertiary-fixed-dim shadow-xs">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">05:15 PM</span>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<h4 class="font-title-md text-sm font-bold text-primary">Auspicious Cake Cutting Muhurat</h4>
+<span class="px-2 py-0.2 rounded bg-primary text-on-primary text-[10px] font-bold">Peak Golden Hour</span>
+</div>
+<p class="text-xs text-on-surface mt-0.5">Family gathering on lawn stage, toddler-safe candle blow, followed by grandparents' blessings.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">06:00 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Soft Play Arena &amp; Giant Magic Bubbles</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Kids ball pit open play; bubble twister performance on central turf.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">07:00 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Live Satvik Dinner Buffet Opens</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Fresh roomali rotis, paneer pasanda, toddler finger sandwiches, and dessert counter.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<span class="font-mono text-xs font-bold text-primary w-16 pt-0.5">08:30 PM</span>
+<div class="flex-1">
+<h4 class="font-title-md text-sm font-semibold text-on-surface">Montessori Favors &amp; Grand Send-Off</h4>
+<p class="text-xs text-on-surface-variant mt-0.5">Distribution of customized wooden toys to 22 toddlers; event wrap before toddler fatigue.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== TAB 6: CHECKLIST ==================== -->
+<div class="tab-content hidden flex flex-col gap-6" id="tab-checklist">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Master Readiness Checklist</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Task distribution between parents, Club Coordinator, and EventEase AI concierge.</p>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap items-center gap-1.5 font-label-md text-xs">
+<button class="checklist-filter px-3 py-1.5 rounded-full bg-primary text-on-primary font-semibold shadow-xs cursor-pointer" data-filter="all" type="button">All (7)</button>
+<button class="checklist-filter px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-medium cursor-pointer" data-filter="pending" type="button">Pending (3)</button>
+<button class="checklist-filter px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-medium cursor-pointer" data-filter="completed" type="button">Completed (4)</button>
+</div>
+</div>
+<!-- Checklist Items -->
+<div class="flex flex-col gap-3" id="checklist-container">
+<!-- Item 1 (Done) -->
+<div class="checklist-item completed p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input checked="" class="w-5 h-5 rounded-md text-secondary focus:ring-secondary/30 accent-secondary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-medium line-through text-on-surface-variant truncate">Lock Club Lawn booking permission &amp; deposit</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: May 30</span> • <span>Paid via Member Portal</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary/15 text-secondary font-bold">Done</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>👨 Rohan</span>
+</div>
+</div>
+</div>
+<!-- Item 2 (Done) -->
+<div class="checklist-item completed p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input checked="" class="w-5 h-5 rounded-md text-secondary focus:ring-secondary/30 accent-secondary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-medium line-through text-on-surface-variant truncate">Finalize kid-friendly Satvik menu with live pasta &amp; chaat</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Jun 20</span> • <span>Tasting Session Cleared</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary/15 text-secondary font-bold">Done</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>👩 Ananya</span>
+</div>
+</div>
+</div>
+<!-- Item 3 (Done) -->
+<div class="checklist-item completed p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input checked="" class="w-5 h-5 rounded-md text-secondary focus:ring-secondary/30 accent-secondary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-medium line-through text-on-surface-variant truncate">Reserve soft play gym &amp; ball pit installation</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Jul 15</span> • <span>Sanitization protocol verified</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary/15 text-secondary font-bold">Done</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>👨 Rohan</span>
+</div>
+</div>
+</div>
+<!-- Item 4 (Done by AI) -->
+<div class="checklist-item completed p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input checked="" class="w-5 h-5 rounded-md text-secondary focus:ring-secondary/30 accent-secondary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-medium line-through text-on-surface-variant truncate">WhatsApp automated invite dispatch to 80 guests</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Jul 24</span> • <span>78/80 RSVPs confirmed via bot</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary/15 text-secondary font-bold">Done</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-xs font-medium text-primary">
+<span>🤖 EventEase AI</span>
+</div>
+</div>
+</div>
+<!-- Item 5 (Pending) -->
+<div class="checklist-item pending p-4 rounded-xl bg-surface-container-lowest border-2 border-primary/30 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input class="w-5 h-5 rounded-md text-primary focus:ring-primary/30 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-bold text-primary truncate">Finalize custom cake design with baker</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Aug 18</span> • <span class="text-primary font-semibold">Requires flavor signoff</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-primary/15 text-primary font-bold">High Priority</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>👩 Ananya</span>
+</div>
+</div>
+</div>
+<!-- Item 6 (Pending) -->
+<div class="checklist-item pending p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input class="w-5 h-5 rounded-md text-primary focus:ring-primary/30 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-semibold text-on-surface truncate">Reconfirm decibel limit (&lt;70 dB) with sound tech</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Aug 20</span> • <span>Toddler acoustic comfort test</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-primary/15 text-primary font-bold">High Priority</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>🏛️ Club Coord</span>
+</div>
+</div>
+</div>
+<!-- Item 7 (Pending) -->
+<div class="checklist-item pending p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/40 shadow-xs flex items-center justify-between gap-4 transition-all hover:bg-surface-container-low/40">
+<div class="flex items-center gap-3.5 flex-1 min-w-0">
+<input class="w-5 h-5 rounded-md text-primary focus:ring-primary/30 accent-primary cursor-pointer" type="checkbox"/>
+<div class="flex flex-col min-w-0">
+<span class="font-title-md text-sm font-semibold text-on-surface truncate">Package return gifts with personalized thank-you tags</span>
+<span class="text-xs text-on-surface-variant flex items-center gap-2 mt-0.5">
+<span>Due: Aug 22</span> • <span>22 Montessori wood puzzles + sweets</span>
+</span>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-container-highest text-on-surface-variant font-bold">Medium</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-xs font-medium text-on-surface">
+<span>👩 Ananya</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Client-side tab switcher script -->
+<script>
+    (function initEventPlanTabs() {
+      const triggers = document.querySelectorAll('.tab-trigger');
+      const contents = document.querySelectorAll('.tab-content');
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const targetId = trigger.getAttribute('data-tab');
+
+          // Update trigger button states
+          triggers.forEach(btn => {
+            const isTarget = btn === trigger;
+            btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+            if (isTarget) {
+              btn.className = 'tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer bg-primary text-on-primary shadow-xs';
+            } else {
+              btn.className = 'tab-trigger inline-flex items-center gap-2 px-4 py-2 rounded-xl font-label-lg text-label-lg transition-all cursor-pointer text-on-surface-variant hover:text-primary hover:bg-surface-container';
+            }
+          });
+
+          // Show targeted pane
+          contents.forEach(content => {
+            if (content.id === 'tab-' + targetId) {
+              content.classList.remove('hidden');
+            } else {
+              content.classList.add('hidden');
+            }
+          });
+        });
+      });
+
+      // Simple filter for checklist items
+      const filterBtns = document.querySelectorAll('.checklist-filter');
+      const checklistItems = document.querySelectorAll('.checklist-item');
+
+      filterBtns.forEach(fBtn => {
+        fBtn.addEventListener('click', () => {
+          const filter = fBtn.getAttribute('data-filter');
+
+          filterBtns.forEach(b => {
+            if (b === fBtn) {
+              b.className = 'checklist-filter px-3 py-1.5 rounded-full bg-primary text-on-primary font-semibold shadow-xs cursor-pointer';
+            } else {
+              b.className = 'checklist-filter px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant hover:bg-surface-container font-medium cursor-pointer';
+            }
+          });
+
+          checklistItems.forEach(item => {
+            if (filter === 'all') {
+              item.classList.remove('hidden');
+            } else if (filter === 'pending') {
+              item.classList.toggle('hidden', !item.classList.contains('pending'));
+            } else if (filter === 'completed') {
+              item.classList.toggle('hidden', !item.classList.contains('completed'));
+            }
+          });
+        });
+      });
+    })();
+  </script>
+</div></main>
+<!-- ==================== 2. COMPREHENSIVE FOOTER ==================== -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+<!-- Brand Summary Column -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-xs">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary">EventEase</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pr-0 lg:pr-8">
+          Harmonizing sacred rituals, modern hospitality, and intelligent planning across India. Thoughtful Muhurat scheduling, regional vendor matchmaking, and complete Lakh/Crore budget clarity.
+        </p>
+<div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container border border-outline-variant/60 w-fit">
+<span class="material-symbols-outlined text-secondary font-bold text-base">chat</span>
+<span class="font-label-md text-label-md text-primary font-semibold">WhatsApp AI Concierge: +91 98200 12345</span>
+</div>
+</div>
+<!-- Event Types Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Event Types</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#event-types">Weddings &amp; Vivah</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Milestone Birthdays</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Griha Pravesh</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Community Pujas</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Corporate Dinners</a>
+</div>
+</div>
+<!-- Planning Tools Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Planning Tools</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#features">Smart Budget Split</a>
+<a class="hover:text-primary transition-colors" href="#features">Vendor Price Estimates</a>
+<a class="hover:text-primary transition-colors" href="#features">Negotiation Tips</a>
+<a class="hover:text-primary transition-colors" href="#sample-plan">Download Sample Plan</a>
+<a class="hover:text-primary transition-colors" href="#features">Checklists &amp; Timelines</a>
+</div>
+</div>
+<!-- City & Legal Column -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Key Destinations</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span>Bengaluru &amp; Hyderabad</span>
+<span>Mumbai &amp; Pune</span>
+<span>Delhi NCR &amp; Jaipur</span>
+<span>Udaipur &amp; Goa</span>
+<a class="text-secondary font-semibold hover:underline mt-1" href="#">Explore City Guides →</a>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="mt-12 pt-8 border-t border-outline-variant/40 flex flex-col md:flex-row items-center justify-between gap-4 font-label-md text-label-md text-on-surface-variant">
+<p>© 2025 EventEase Technologies India. Designed with festive warmth &amp; precision.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Celebration</a>
+<a class="hover:text-primary transition-colors" href="#">Safety Guidelines</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

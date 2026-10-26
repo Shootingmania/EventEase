@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>EventEase - AI Event Planning Assistant</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #fcf9f8;
+      color: #1b1c1c;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+    main > :first-child {
+      margin-top: 0 !important;
+    }
+    main > :last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#593c00",
+          "on-tertiary": "#ffffff",
+          "primary-fixed": "#ffd9df",
+          "on-primary": "#ffffff",
+          "inverse-surface": "#303030",
+          "on-primary-container": "#ff8aa4",
+          "on-secondary-container": "#007166",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-high": "#eae7e7",
+          "on-secondary-fixed-variant": "#005048",
+          "on-background": "#1b1c1c",
+          "tertiary-fixed": "#ffdead",
+          "error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#81233f",
+          "background": "#fcf9f8",
+          "surface-container-highest": "#e4e2e1",
+          "secondary-fixed-dim": "#6fd8c8",
+          "on-secondary-fixed": "#00201c",
+          "outline-variant": "#dbc0c4",
+          "tertiary-fixed-dim": "#ffba3b",
+          "on-error": "#ffffff",
+          "surface-variant": "#e4e2e1",
+          "secondary-container": "#8cf5e4",
+          "on-tertiary-fixed": "#281900",
+          "secondary-fixed": "#8cf5e4",
+          "on-surface-variant": "#554245",
+          "surface-dim": "#dcd9d9",
+          "on-secondary": "#ffffff",
+          "inverse-on-surface": "#f3f0f0",
+          "on-tertiary-fixed-variant": "#604100",
+          "on-tertiary-container": "#e6a100",
+          "primary-fixed-dim": "#ffb1c0",
+          "primary": "#5c0325",
+          "primary-container": "#7a1e3a",
+          "on-error-container": "#93000a",
+          "surface-container": "#f0eded",
+          "on-surface": "#1b1c1c",
+          "surface-tint": "#a03b56",
+          "surface-bright": "#fcf9f8",
+          "inverse-primary": "#ffb1c0",
+          "error": "#ba1a1a",
+          "surface": "#fcf9f8",
+          "outline": "#887175",
+          "on-primary-fixed": "#3f0016",
+          "surface-container-low": "#f6f3f2",
+          "tertiary": "#3d2700",
+          "secondary": "#006a60"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin-lg": "3rem",
+          "gutter": "1rem",
+          "gutter-lg": "2rem",
+          "margin": "1rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "gutter-md": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin-md": "2rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Playfair Display"],
+          "label-md": ["Inter"],
+          "currency-display": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-md": ["Playfair Display"],
+          "headline-lg-mobile": ["Playfair Display"],
+          "body-sm": ["Inter"],
+          "label-lg": ["Inter"],
+          "title-lg": ["Inter"],
+          "body-lg": ["Inter"],
+          "display-lg-mobile": ["Playfair Display"],
+          "display-lg": ["Playfair Display"],
+          "headline-lg": ["Playfair Display"],
+          "title-md": ["Inter"]
+        },
+        "fontSize": {
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+          "currency-display": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+          "headline-lg-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "600"}],
+          "body-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "title-lg": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- ==================== 1. TOP NAVIGATION WITH WIZARD BAR ==================== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40 shadow-sm">
+<div class="h-28 flex flex-col justify-between">
+<!-- Primary Bar -->
+<div class="max-w-7xl mx-auto w-full h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Logo + Tagline -->
+<a class="flex items-center gap-3 group" data-path="home" href="#">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight">EventEase</span>
+<span class="font-label-md text-[10px] text-on-surface-variant tracking-wider uppercase">AI Event Planning Assistant</span>
+</div>
+</a>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 xl:gap-2" data-active-classes="bg-surface-container text-primary font-label-lg shadow-xs">
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="how-it-works" href="#how-it-works">How it works</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="event-types" href="#event-types">Event types</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="features" href="#features">Features</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="sample-plan" href="#sample-plan">Sample plan</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="testimonials" href="#testimonials">Testimonials</a>
+</nav>
+<!-- Right Action Group -->
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/60 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span>Bengaluru / Mumbai</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</div>
+<a class="hidden md:inline-flex items-center px-4 py-2 rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-container transition-all" data-path="sign-in" href="#">Sign in</a>
+<a class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all hover:shadow-md" data-path="step-4-set-the-mood" href="#step-4">Start Planning</a>
+</div>
+</div>
+<!-- Wizard Sub-Header / Step Progress Bar -->
+<div class="w-full bg-surface-container-low/80 border-t border-outline-variant/30 py-1.5 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<!-- Breadcrumbs & Step Indicator -->
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant overflow-x-auto py-0.5">
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-1-event-basics" href="#">1. Basics</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-2-date-and-venue" href="#">2. Date &amp; City</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-3-whos-coming" href="#">3. Who's coming?</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="font-label-lg text-primary flex items-center gap-1.5 whitespace-nowrap font-semibold bg-surface-container px-2.5 py-0.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Step 4: Set the mood (Rituals &amp; Ambience)
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="opacity-60 whitespace-nowrap">5. Review &amp; Budget</span>
+</div>
+<!-- Progress indicator -->
+<div class="hidden md:flex items-center gap-2 font-label-md text-xs text-on-surface-variant font-medium">
+<span>Step 4 of 5 (80%)</span>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-28"><div class="flex flex-col w-full">
+<!-- WIZARD SUB-HEADER PROGRESS BANNER -->
+<section class="w-full bg-surface-container-low/90 backdrop-blur-md px-4 sm:px-6 lg:px-8 py-5">
+<div class="max-w-7xl mx-auto flex flex-col gap-4">
+<!-- Top Meta Line: Step indicator + Mode Toggle -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary font-label-md text-label-md font-semibold tracking-wide uppercase">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            STEP 5 OF 5 • Service Matchmaking &amp; Vendor Curation
+          </span>
+<div class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm text-secondary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Bengaluru Vendor Registry Active</span>
+</div>
+</div>
+<!-- Mode Toggle & Context Pill -->
+<div class="flex items-center gap-3">
+<div class="hidden md:flex items-center bg-surface-container-high p-1 rounded-full text-on-surface-variant text-label-md font-label-md">
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all" id="btn-quick-plan" onclick="togglePlanningMode('quick')">Quick Plan (~60s AI)</button>
+<button class="px-3 py-1 rounded-full text-on-surface-variant hover:text-primary transition-all" id="btn-detailed-plan" onclick="togglePlanningMode('detailed')">Detailed Plan (RFP &amp; Vendor Direct)</button>
+</div>
+</div>
+</div>
+<!-- 100% Progress Gradient Line -->
+<div class="w-full flex flex-col gap-1.5">
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full rounded-full bg-gradient-to-r from-primary via-primary-container to-tertiary-fixed-dim transition-all duration-700" style="width: 100%;"></div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Auspicious Foundations Set</span>
+<span class="font-semibold text-primary">100% Final Configuration</span>
+</div>
+</div>
+<!-- Horizontal Steps Breadcrumbs Strip -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary shrink-0 font-medium">
+<span class="material-symbols-outlined text-base font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>1. Event Type</span>
+</div>
+<span class="material-symbols-outlined text-xs text-outline shrink-0">chevron_right</span>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary shrink-0 font-medium">
+<span class="material-symbols-outlined text-base font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>2. Date &amp; City</span>
+</div>
+<span class="material-symbols-outlined text-xs text-outline shrink-0">chevron_right</span>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary shrink-0 font-medium">
+<span class="material-symbols-outlined text-base font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>3. Guest Scale</span>
+</div>
+<span class="material-symbols-outlined text-xs text-outline shrink-0">chevron_right</span>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-secondary shrink-0 font-medium">
+<span class="material-symbols-outlined text-base font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>4. Rituals &amp; Mood</span>
+</div>
+<span class="material-symbols-outlined text-xs text-outline shrink-0">chevron_right</span>
+<div class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary text-on-primary shrink-0 shadow-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span>5. Services (Active)</span>
+</div>
+</div>
+<!-- Active Context Pill -->
+<div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-outline-variant/30 text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-semibold text-primary">Active Blueprint Context:</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-medium text-on-surface">Wedding / Vivah 💍</span>
+<span class="text-outline">•</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-medium text-on-surface">Bengaluru (Palace Grounds &amp; Indiranagar)</span>
+<span class="text-outline">•</span>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed/40 text-on-tertiary-container font-semibold">₹15.0L Target Cap</span>
+<span class="text-outline">•</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-medium text-on-surface">300 Guests</span>
+<span class="text-outline">•</span>
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-medium text-on-surface">3 Days (Mehendi, Sangeet, Muhurat)</span>
+</div>
+<a class="text-secondary hover:underline flex items-center gap-1 font-semibold text-xs" href="#">
+<span>Edit Parameters</span>
+<span class="material-symbols-outlined text-xs">edit</span>
+</a>
+</div>
+</div>
+</section>
+<!-- MAIN WORKSPACE -->
+<main class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 flex flex-col gap-10">
+<!-- Header Hero Group -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-4">
+<div class="flex flex-col gap-2 max-w-3xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">hotel_class</span>
+<span class="font-label-lg text-label-lg tracking-widest uppercase text-tertiary font-bold">Phase 5 • Vendor Blueprint &amp; Service Selection</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Curate Your Celebration Services</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Choose the exact artisans, crews, and hospitality services you need. Prioritize each category to match your ₹15.0 Lakh budget ceiling without compromising sacred rituals or guest experience.
+        </p>
+</div>
+<!-- Quick Action Controls -->
+<div class="flex flex-wrap items-center gap-2 shrink-0">
+<button class="px-4 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-lg text-label-lg font-semibold flex items-center gap-2 transition-all shadow-xs" onclick="applyRecommendedBundle()">
+<span class="material-symbols-outlined text-lg text-secondary" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+<span>Select Recommended Wedding Bundle</span>
+</button>
+<button class="px-4 py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-lg text-label-lg transition-all" onclick="resetDefaults()">
+          Reset to Defaults
+        </button>
+</div>
+</div>
+<!-- Category Filter Bar -->
+<div class="flex items-center justify-between flex-wrap gap-4 bg-surface-container-low p-2 rounded-2xl shadow-xs">
+<div class="flex items-center gap-2 overflow-x-auto py-1" id="filter-pill-group">
+<button class="filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-primary text-on-primary shadow-xs transition-all" data-cat="all" onclick="filterCategory('all')">All Services (13)</button>
+<button class="filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-all" data-cat="core" onclick="filterCategory('core')">Core Ceremonies (5)</button>
+<button class="filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-all" data-cat="media" onclick="filterCategory('media')">Media &amp; Memory (3)</button>
+<button class="filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-all" data-cat="entertainment" onclick="filterCategory('entertainment')">Entertainment &amp; Vibe (3)</button>
+<button class="filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-all" data-cat="hospitality" onclick="filterCategory('hospitality')">Hospitality &amp; Favors (2)</button>
+</div>
+<div class="flex items-center gap-2 pr-2 text-on-surface-variant font-label-md text-label-md">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-primary"></span> Must Have
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim ml-2"></span> Nice to Have
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-outline-variant ml-2"></span> Excluded
+      </div>
+</div>
+<!-- TWO-COLUMN WORKFLOW: SERVICES GRID (9 COLS) + AI BUDGET ADVISOR SIDEBAR (3 COLS) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- LEFT 8-9 COLS: 13 SERVICE CARDS GRID -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="services-container">
+<!-- SERVICE 1 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="media" data-cost-max="180000" data-cost-min="120000" data-service-id="1" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Media &amp; Memory</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹1,20,000 – ₹1,80,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Photographer (Traditional &amp; Candid)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Two senior candid photographers covering 3 days, pre-wedding couple shoot, high-res edited gallery.
+                </p>
+</div>
+</div>
+<!-- 3-Way Selector -->
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(1, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(1, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(1, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 2 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="media" data-cost-max="140000" data-cost-min="90000" data-service-id="2" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">videocam</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Media &amp; Memory</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹90,000 – ₹1,40,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Videographer &amp; 4K Cinematic Reel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Full 4K documentary film, 3-minute Instagram teaser, traditional full-length ritual cut.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(2, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(2, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(2, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 3 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="media" data-cost-max="35000" data-cost-min="25000" data-service-id="3" data-state="nice">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">flight</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Media &amp; Memory</span>
+<span class="font-label-lg text-label-lg text-tertiary font-bold mt-1">~₹25,000 – ₹35,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold">Drone Aerial Coverage</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  DGCA-licensed drone pilot for outdoor Baraat procession, open lawn pheras, and venue aerials.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(3, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-tertiary-fixed-dim text-on-tertiary-container shadow-xs transition-all" onclick="setServiceState(3, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(3, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 4 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="core" data-cost-max="450000" data-cost-min="320000" data-service-id="4" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Core Ceremonies</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹3,20,000 – ₹4,50,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Mandap &amp; Floral Decorator</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Fresh marigold and rose mandap, ambient fairy lighting, entrance archways, brass urli setup.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(4, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(4, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(4, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 5 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="core" data-cost-max="720000" data-cost-min="580000" data-service-id="5" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Core Ceremonies</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹5,80,000 – ₹7,20,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Master Caterer &amp; Live Counters</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Multi-cuisine banquet for 300 guests across 3 days, live chaat stalls, satvik &amp; Jain kitchen segregation.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(5, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(5, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(5, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 6 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="core" data-cost-max="18000" data-cost-min="12000" data-service-id="6" data-state="nice">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">cake</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Core Ceremonies</span>
+<span class="font-label-lg text-label-lg text-tertiary font-bold mt-1">~₹12,000 – ₹18,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold">Celebration Cake (Tiered)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  3-tier artisanal eggless cake with edible gold foil, rose water cardamom buttercream for reception.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(6, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-tertiary-fixed-dim text-on-tertiary-container shadow-xs transition-all" onclick="setServiceState(6, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(6, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 7 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="entertainment" data-cost-max="70000" data-cost-min="45000" data-service-id="7" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">headphones</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Entertainment</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹45,000 – ₹70,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Sangeet DJ &amp; Sound Setup</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Concert-grade JBL line-array audio, wireless mics for relatives, DJ console with Bollywood &amp; Punjabi set.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(7, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(7, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(7, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 8 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="entertainment" data-cost-max="55000" data-cost-min="35000" data-service-id="8" data-state="nice">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">music_note</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Entertainment</span>
+<span class="font-label-lg text-label-lg text-tertiary font-bold mt-1">~₹35,000 – ₹55,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold">Live Band / Classical Shehnai Troupe</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Auspicious morning Shehnai &amp; Nadaswaram recital for Muhurat pheras, plus acoustic evening fusion band.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(8, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-tertiary-fixed-dim text-on-tertiary-container shadow-xs transition-all" onclick="setServiceState(8, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(8, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 9 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="entertainment" data-cost-max="40000" data-cost-min="25000" data-service-id="9" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Entertainment</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹25,000 – ₹40,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Wedding Emcee &amp; Anchor</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Bilingual English &amp; Hindi anchor coordinating family games, dance cues, and guest announcements.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(9, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(9, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(9, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 10 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="core" data-cost-max="85000" data-cost-min="50000" data-service-id="10" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">brush</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Core Ceremonies</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹50,000 – ₹85,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Bridal &amp; Family Makeup Artist (MUA)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  HD bridal makeup with airbrush option, hair styling, saree/dupatta draping + 3 immediate family makeovers.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(10, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(10, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(10, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 11 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="hospitality" data-cost-max="90000" data-cost-min="60000" data-service-id="11" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">featured_seasonal_and_gifts</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Hospitality &amp; Favors</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹60,000 – ₹90,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Return Gifts &amp; Shagun Favors</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Curated brass pooja bell gift boxes with dry fruit pots and personalized wedding monogram cards (300 units).
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(11, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(11, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(11, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 12 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="core" data-cost-max="40000" data-cost-min="25000" data-service-id="12" data-state="nice">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed/30 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">360</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Core Ceremonies</span>
+<span class="font-label-lg text-label-lg text-tertiary font-bold mt-1">~₹25,000 – ₹40,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-on-surface font-semibold">360° Interactive Photo Booth</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Slow-mo spinning platform with customized digital overlays and instant WhatsApp video delivery for guests.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(12, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-tertiary-fixed-dim text-on-tertiary-container shadow-xs transition-all" onclick="setServiceState(12, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(12, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+<!-- SERVICE 13 -->
+<div class="service-card flex flex-col justify-between p-5 rounded-2xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all relative overflow-hidden" data-category="hospitality" data-cost-max="30000" data-cost-min="20000" data-service-id="13" data-state="must">
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar"></div>
+<div class="flex flex-col gap-4">
+<div class="flex items-start justify-between gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-md text-[11px] font-semibold text-on-surface-variant uppercase tracking-wider">Hospitality &amp; Favors</span>
+<span class="font-label-lg text-label-lg text-primary font-bold mt-1">~₹20,000 – ₹30,000</span>
+</div>
+</div>
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Valet Parking &amp; Guest Logistics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1.5 leading-relaxed">
+                  Uniformed 6-valet team, ticketed key management, and golf cart assistance for elder arrivals.
+                </p>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-outline-variant/30">
+<div class="grid grid-cols-3 gap-1 bg-surface-container p-1 rounded-xl text-center">
+<button class="state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all" onclick="setServiceState(13, 'must')">Must have</button>
+<button class="state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all" onclick="setServiceState(13, 'nice')">Nice to have</button>
+<button class="state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all" onclick="setServiceState(13, 'none')">Not needed</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Regional Artisan Assurance Callout -->
+<div class="p-6 rounded-2xl bg-surface-container-low flex items-start gap-4 shadow-xs">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-title-md text-title-md text-primary font-bold">100% Vetted Local Wedding Artisans &amp; Crew</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Every vendor recommendation is matched to Bengaluru venue restrictions (noise curfew at 10 PM, Palace Grounds fire safety clearances, and kitchen SATVIK segregation guarantees).
+            </p>
+</div>
+</div>
+</div>
+<!-- RIGHT 4 COLS: DESKTOP AI VENDOR ALLOCATION ANALYSIS & FINANCIAL GUARDRAILS -->
+<aside class="lg:col-span-4 sticky top-36 flex flex-col gap-6">
+<!-- MAIN ANALYTICS CARD -->
+<div class="p-6 rounded-2xl bg-surface-container-lowest shadow-md flex flex-col gap-6">
+<!-- Card Header -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed/30 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-primary font-bold">AI Vendor Allocation Analysis</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/10 text-secondary font-label-md text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Live Sync
+            </span>
+</div>
+<!-- Cost Breakdown List -->
+<div class="flex flex-col gap-3 font-body-sm text-body-sm">
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Must-Have Services (<span id="count-must">9</span> items)</span>
+</div>
+<span class="font-title-md text-title-md text-primary font-bold" id="cost-must-text">₹13,40,000</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-on-surface font-medium">Nice-to-Have Optional (<span id="count-nice">4</span> items)</span>
+</div>
+<span class="font-title-md text-title-md text-tertiary font-bold" id="cost-nice-text">₹1,07,000</span>
+</div>
+<div class="pt-3 border-t border-outline-variant/40 flex justify-between items-center">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Total Committed Selection</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold" id="cost-total-text">₹14,47,000</span>
+</div>
+<!-- Target Cap & Buffer -->
+<div class="p-3.5 rounded-xl bg-surface-container flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<div class="flex flex-col">
+<span class="text-xs uppercase tracking-wider text-outline">Target Cap</span>
+<span class="font-title-md text-title-md text-on-surface font-semibold">₹15,00,000</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-xs uppercase tracking-wider text-outline">Safety Buffer Remaining</span>
+<span class="font-title-md text-title-md text-secondary font-bold" id="buffer-text">₹53,000 (3.5%)</span>
+</div>
+</div>
+</div>
+<!-- Inline SVG Budget Health Segmented Gauge -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center text-xs font-label-md">
+<span class="font-semibold text-on-surface">Budget Health Utilization</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold" id="gauge-badge">On Budget • 96% Utilized</span>
+</div>
+<!-- Segmented Gauge SVG -->
+<div class="w-full">
+<svg class="w-full h-4 rounded-full overflow-hidden" fill="none" viewbox="0 0 320 20" xmlns="http://www.w3.org/2000/svg">
+<!-- Background track -->
+<rect class="text-surface-container-highest" fill="currentColor" height="20" rx="10" width="320"></rect>
+<!-- Must have bar (89.3%) -->
+<rect class="text-primary transition-all duration-500" fill="currentColor" height="20" id="svg-bar-must" rx="0" width="285"></rect>
+<!-- Nice to have bar (7.1%) -->
+<rect class="text-tertiary-fixed-dim transition-all duration-500" fill="currentColor" height="20" id="svg-bar-nice" rx="0" width="23" x="285"></rect>
+</svg>
+</div>
+<div class="flex justify-between text-[11px] font-label-md text-on-surface-variant">
+<span>0L</span>
+<span>₹10L</span>
+<span class="font-semibold text-primary">₹15L Cap</span>
+</div>
+</div>
+<!-- Bengaluru Local Vendor Intelligence Banner -->
+<div class="p-4 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-title-md text-title-md font-semibold">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span>Bengaluru Local Intelligence</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              EventEase pre-negotiated corporate rates unlock <strong class="text-secondary font-bold">~₹1,15,000</strong> in direct discounts across selected photography &amp; catering partners.
+            </p>
+</div>
+<!-- "Negotiate for Me" AI Concierge Switch -->
+<div class="p-4 rounded-xl bg-primary/5 flex items-center justify-between gap-3">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-primary font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">handshake</span>
+                Auto-Negotiate for Me
+              </span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">EventEase AI submits bulk bundle tender to vendors</span>
+</div>
+<!-- Toggle Pill Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="auto-negotiate-toggle" onchange="toggleNegotiate(this)" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Concierge Tip Card -->
+<div class="p-5 rounded-2xl bg-surface-container-low shadow-xs flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/40 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">magic_button</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-primary font-bold">Smart Muhurat Coordination</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Your selected Live Shehnai troupe will automatically be synched with the 10:42 AM Pheras window.</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- STICKY BOTTOM DOCK ACTION BAR -->
+<div class="sticky bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md border-t border-outline-variant/40 shadow-xl py-4 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Left: Back Button -->
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-all" href="#step-4">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+<span>Back to Step 4 (Mood &amp; Rituals)</span>
+</a>
+<!-- Center: Running Total Live Readout -->
+<div class="flex flex-col items-center md:items-center text-center">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-xs uppercase tracking-wider text-on-surface-variant font-medium">Estimated cost of selected services:</span>
+<span class="font-title-lg text-title-lg text-primary font-bold" id="dock-cost-range">₹13.4L – ₹14.5L</span>
+</div>
+<div class="text-on-surface-variant font-label-md text-xs" id="dock-items-summary">
+          (9 Must Have • 4 Nice to Have • 0 Excluded)
+        </div>
+</div>
+<!-- Right: Primary Generation Action Button -->
+<div class="flex items-center gap-3 w-full md:w-auto justify-end">
+<button class="w-full md:w-auto px-7 py-3.5 rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-3 group" onclick="generateCelebrationPlan()">
+<span class="tracking-wide">Generate my plan</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim group-hover:translate-x-1 transition-transform" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</button>
+</div>
+</div>
+</div>
+<!-- FLOATING MODAL SIMULATION FOR PLAN GENERATION -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/50 backdrop-blur-sm hidden items-center justify-center p-4" id="plan-modal">
+<div class="bg-surface-container-lowest max-w-lg w-full rounded-3xl p-8 shadow-2xl flex flex-col items-center text-center gap-5 relative overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-tertiary-fixed-dim to-secondary"></div>
+<div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl animate-spin" style="font-variation-settings: 'FILL' 1;">progress_activity</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Assembling Your Utsav Master Plan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Benchmarking 13 chosen services against Bengaluru vendor tenders, locking in ₹1,15,000 corporate savings, and synchronizing Muhurat timelines.
+        </p>
+</div>
+<!-- Live progress ticker -->
+<div class="w-full bg-surface-container rounded-xl p-4 flex flex-col gap-2 text-left font-label-md text-xs">
+<div class="flex items-center gap-2 text-secondary font-semibold">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Mandap &amp; Floral Decor bids matched (Palace Grounds approved)</span>
+</div>
+<div class="flex items-center gap-2 text-secondary font-semibold">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Satvik Catering capacity locked for 300 guests</span>
+</div>
+<div class="flex items-center gap-2 text-primary font-semibold animate-pulse">
+<span class="material-symbols-outlined text-base">hourglass_top</span>
+<span>Formatting WhatsApp Bride &amp; Groom summary dashboard...</span>
+</div>
+</div>
+<button class="w-full py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-bold hover:bg-primary-container transition-all" onclick="closePlanModal()">
+        Open Interactive Dashboard →
+      </button>
+</div>
+</div>
+<!-- CLIENT-SIDE STATE AND DYNAMIC CALCULATION SCRIPT -->
+<script>
+    // State management dictionary
+    const serviceData = {
+      1: { name: "Photographer", min: 120000, max: 180000, state: "must", cat: "media" },
+      2: { name: "Videographer", min: 90000, max: 140000, state: "must", cat: "media" },
+      3: { name: "Drone Coverage", min: 25000, max: 35000, state: "nice", cat: "media" },
+      4: { name: "Mandap Decorator", min: 320000, max: 450000, state: "must", cat: "core" },
+      5: { name: "Master Caterer", min: 580000, max: 720000, state: "must", cat: "core" },
+      6: { name: "Celebration Cake", min: 12000, max: 18000, state: "nice", cat: "core" },
+      7: { name: "Sangeet DJ", min: 45000, max: 70000, state: "must", cat: "entertainment" },
+      8: { name: "Live Band/Shehnai", min: 35000, max: 55000, state: "nice", cat: "entertainment" },
+      9: { name: "Wedding Emcee", min: 25000, max: 40000, state: "must", cat: "entertainment" },
+      10: { name: "Bridal Makeup", min: 50000, max: 85000, state: "must", cat: "core" },
+      11: { name: "Return Gifts", min: 60000, max: 90000, state: "must", cat: "hospitality" },
+      12: { name: "360 Photo Booth", min: 25000, max: 40000, state: "nice", cat: "core" },
+      13: { name: "Valet Logistics", min: 20000, max: 30000, state: "must", cat: "hospitality" }
+    };
+
+    const TARGET_BUDGET = 1500000;
+
+    function formatLakhs(amount) {
+      return "₹" + amount.toLocaleString('en-IN');
+    }
+
+    function recalculateDashboard() {
+      let mustTotal = 0;
+      let niceTotal = 0;
+      let mustCount = 0;
+      let niceCount = 0;
+      let noneCount = 0;
+
+      let minTotal = 0;
+      let maxTotal = 0;
+
+      for (const id in serviceData) {
+        const item = serviceData[id];
+        // Calculate mid-estimate for committed figures
+        const midEstimate = Math.round((item.min + item.max) / 2);
+
+        if (item.state === 'must') {
+          mustTotal += midEstimate;
+          mustCount++;
+          minTotal += item.min;
+          maxTotal += item.max;
+        } else if (item.state === 'nice') {
+          niceTotal += midEstimate;
+          niceCount++;
+          minTotal += item.min;
+          maxTotal += item.max;
+        } else {
+          noneCount++;
+        }
+      }
+
+      const totalCommitted = mustTotal + niceTotal;
+      const buffer = TARGET_BUDGET - totalCommitted;
+      const bufferPercent = ((buffer / TARGET_BUDGET) * 100).toFixed(1);
+
+      // Update right sidebar widgets
+      document.getElementById('count-must').textContent = mustCount;
+      document.getElementById('count-nice').textContent = niceCount;
+      document.getElementById('cost-must-text').textContent = formatLakhs(mustTotal);
+      document.getElementById('cost-nice-text').textContent = formatLakhs(niceTotal);
+      document.getElementById('cost-total-text').textContent = formatLakhs(totalCommitted);
+
+      // Buffer readout
+      const bufferEl = document.getElementById('buffer-text');
+      if (buffer >= 0) {
+        bufferEl.textContent = formatLakhs(buffer) + " (" + bufferPercent + "%)";
+        bufferEl.className = "font-title-md text-title-md text-secondary font-bold";
+      } else {
+        bufferEl.textContent = "Deficit " + formatLakhs(Math.abs(buffer));
+        bufferEl.className = "font-title-md text-title-md text-error font-bold";
+      }
+
+      // Gauge bar computations
+      const mustWidth = Math.min(320, Math.round((mustTotal / TARGET_BUDGET) * 320));
+      const niceWidth = Math.min(320 - mustWidth, Math.round((niceTotal / TARGET_BUDGET) * 320));
+      
+      const svgMust = document.getElementById('svg-bar-must');
+      const svgNice = document.getElementById('svg-bar-nice');
+      if (svgMust && svgNice) {
+        svgMust.setAttribute('width', mustWidth);
+        svgNice.setAttribute('x', mustWidth);
+        svgNice.setAttribute('width', niceWidth);
+      }
+
+      const gaugeBadge = document.getElementById('gauge-badge');
+      const utilPercent = Math.round((totalCommitted / TARGET_BUDGET) * 100);
+      if (utilPercent <= 100) {
+        gaugeBadge.textContent = "On Budget • " + utilPercent + "% Utilized";
+        gaugeBadge.className = "px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-bold";
+      } else {
+        gaugeBadge.textContent = "Over Budget • " + utilPercent + "%";
+        gaugeBadge.className = "px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-bold";
+      }
+
+      // Update sticky bottom action bar
+      const minLakh = (minTotal / 100000).toFixed(1);
+      const maxLakh = (maxTotal / 100000).toFixed(1);
+      document.getElementById('dock-cost-range').textContent = "₹" + minLakh + "L – ₹" + maxLakh + "L";
+      document.getElementById('dock-items-summary').textContent = 
+        `(${mustCount} Must Have • ${niceCount} Nice to Have • ${noneCount} Excluded)`;
+    }
+
+    function setServiceState(id, newState) {
+      if (!serviceData[id]) return;
+      serviceData[id].state = newState;
+
+      const card = document.querySelector(`[data-service-id="${id}"]`);
+      if (!card) return;
+
+      card.setAttribute('data-state', newState);
+
+      // Update accent bar & styles
+      const bar = card.querySelector('.card-accent-bar');
+      const title = card.querySelector('h3');
+      const btnMust = card.querySelector('.state-btn-must');
+      const btnNice = card.querySelector('.state-btn-nice');
+      const btnNone = card.querySelector('.state-btn-none');
+
+      // Reset button styles
+      btnMust.className = "state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all";
+      btnNice.className = "state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-primary transition-all";
+      btnNone.className = "state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-medium text-on-surface-variant hover:text-error transition-all";
+
+      if (newState === 'must') {
+        bar.className = "absolute top-0 left-0 right-0 h-1.5 bg-primary card-accent-bar";
+        card.style.opacity = "1";
+        title.className = "font-title-lg text-title-lg text-primary font-semibold";
+        btnMust.className = "state-btn-must py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-primary text-on-primary shadow-xs transition-all";
+      } else if (newState === 'nice') {
+        bar.className = "absolute top-0 left-0 right-0 h-1.5 bg-tertiary-fixed-dim card-accent-bar";
+        card.style.opacity = "1";
+        title.className = "font-title-lg text-title-lg text-on-surface font-semibold";
+        btnNice.className = "state-btn-nice py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-tertiary-fixed-dim text-on-tertiary-container shadow-xs transition-all";
+      } else {
+        bar.className = "absolute top-0 left-0 right-0 h-1.5 bg-outline-variant card-accent-bar";
+        card.style.opacity = "0.55";
+        title.className = "font-title-lg text-title-lg text-on-surface-variant font-medium line-through";
+        btnNone.className = "state-btn-none py-1.5 px-2 rounded-lg font-label-md text-xs font-semibold bg-surface-container-highest text-on-surface shadow-xs transition-all";
+      }
+
+      recalculateDashboard();
+    }
+
+    function filterCategory(cat) {
+      const cards = document.querySelectorAll('.service-card');
+      const tabs = document.querySelectorAll('.filter-tab');
+
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-cat') === cat) {
+          tab.className = "filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-primary text-on-primary shadow-xs transition-all";
+        } else {
+          tab.className = "filter-tab px-4 py-2 rounded-full font-label-lg text-label-lg bg-surface-container-lowest text-on-surface-variant hover:text-primary transition-all";
+        }
+      });
+
+      cards.forEach(card => {
+        const itemCat = card.getAttribute('data-category');
+        if (cat === 'all' || itemCat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function applyRecommendedBundle() {
+      // 9 Must, 4 Nice
+      const recommended = {
+        1: 'must', 2: 'must', 3: 'nice', 4: 'must', 5: 'must',
+        6: 'nice', 7: 'must', 8: 'nice', 9: 'must', 10: 'must',
+        11: 'must', 12: 'nice', 13: 'must'
+      };
+      for (const id in recommended) {
+        setServiceState(id, recommended[id]);
+      }
+    }
+
+    function resetDefaults() {
+      applyRecommendedBundle();
+    }
+
+    function togglePlanningMode(mode) {
+      const btnQuick = document.getElementById('btn-quick-plan');
+      const btnDetailed = document.getElementById('btn-detailed-plan');
+      if (mode === 'quick') {
+        btnQuick.className = "px-3 py-1 rounded-full bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all";
+        btnDetailed.className = "px-3 py-1 rounded-full text-on-surface-variant hover:text-primary transition-all";
+      } else {
+        btnDetailed.className = "px-3 py-1 rounded-full bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all";
+        btnQuick.className = "px-3 py-1 rounded-full text-on-surface-variant hover:text-primary transition-all";
+      }
+    }
+
+    function toggleNegotiate(input) {
+      const isChecked = input.checked;
+      const banner = document.querySelector('#gauge-badge');
+      if (isChecked) {
+        banner.title = "Pre-negotiated corporate discounts locked";
+      }
+    }
+
+    function generateCelebrationPlan() {
+      const modal = document.getElementById('plan-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closePlanModal() {
+      const modal = document.getElementById('plan-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Initialize initial calculations on DOM ready
+    window.addEventListener('DOMContentLoaded', () => {
+      recalculateDashboard();
+    });
+  </script>
+</div></main>
+<!-- ==================== 2. COMPREHENSIVE FOOTER ==================== -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+<!-- Brand Summary Column -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-xs">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary">EventEase</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pr-0 lg:pr-8">
+          Harmonizing sacred rituals, modern hospitality, and intelligent planning across India. Thoughtful Muhurat scheduling, regional vendor matchmaking, and complete Lakh/Crore budget clarity.
+        </p>
+<div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container border border-outline-variant/60 w-fit">
+<span class="material-symbols-outlined text-secondary font-bold text-base">chat</span>
+<span class="font-label-md text-label-md text-primary font-semibold">WhatsApp AI Concierge: +91 98200 12345</span>
+</div>
+</div>
+<!-- Event Types Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Event Types</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#event-types">Weddings &amp; Vivah</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Milestone Birthdays</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Griha Pravesh</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Community Pujas</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Corporate Dinners</a>
+</div>
+</div>
+<!-- Planning Tools Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Planning Tools</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#features">Smart Budget Split</a>
+<a class="hover:text-primary transition-colors" href="#features">Vendor Price Estimates</a>
+<a class="hover:text-primary transition-colors" href="#features">Negotiation Tips</a>
+<a class="hover:text-primary transition-colors" href="#sample-plan">Download Sample Plan</a>
+<a class="hover:text-primary transition-colors" href="#features">Checklists &amp; Timelines</a>
+</div>
+</div>
+<!-- City & Legal Column -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Key Destinations</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span>Bengaluru &amp; Hyderabad</span>
+<span>Mumbai &amp; Pune</span>
+<span>Delhi NCR &amp; Jaipur</span>
+<span>Udaipur &amp; Goa</span>
+<a class="text-secondary font-semibold hover:underline mt-1" href="#">Explore City Guides →</a>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="mt-12 pt-8 border-t border-outline-variant/40 flex flex-col md:flex-row items-center justify-between gap-4 font-label-md text-label-md text-on-surface-variant">
+<p>© 2025 EventEase Technologies India. Designed with festive warmth &amp; precision.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Celebration</a>
+<a class="hover:text-primary transition-colors" href="#">Safety Guidelines</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

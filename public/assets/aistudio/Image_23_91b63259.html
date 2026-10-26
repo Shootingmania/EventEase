@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#eae7e7", "surface-container-low": "#f6f3f2", "outline-variant": "#dbc0c4", "on-tertiary-container": "#e6a100", "surface-variant": "#e4e2e1", "on-primary-container": "#ff8aa4", "on-primary-fixed-variant": "#81233f", "surface": "#fcf9f8", "on-secondary-container": "#007166", "inverse-primary": "#ffb1c0", "outline": "#887175", "on-error": "#ffffff", "on-error-container": "#93000a", "tertiary": "#3d2700", "error-container": "#ffdad6", "inverse-surface": "#303030", "surface-bright": "#fcf9f8", "secondary-container": "#8cf5e4", "tertiary-container": "#593c00", "surface-tint": "#a03b56", "secondary-fixed": "#8cf5e4", "tertiary-fixed-dim": "#ffba3b", "primary-fixed-dim": "#ffb1c0", "on-secondary-fixed": "#00201c", "primary": "#5c0325", "on-surface": "#1b1c1c", "primary-container": "#7a1e3a", "error": "#ba1a1a", "on-surface-variant": "#554245", "background": "#fcf9f8", "on-background": "#1b1c1c", "surface-container": "#f0eded", "surface-container-lowest": "#ffffff", "on-primary": "#ffffff", "primary-fixed": "#ffd9df", "on-tertiary-fixed": "#281900", "secondary": "#006a60", "on-secondary-fixed-variant": "#005048", "secondary-fixed-dim": "#6fd8c8", "on-tertiary": "#ffffff", "surface-dim": "#dcd9d9", "tertiary-fixed": "#ffdead", "on-tertiary-fixed-variant": "#604100", "surface-container-highest": "#e4e2e1", "on-secondary": "#ffffff", "on-primary-fixed": "#3f0016", "inverse-on-surface": "#f3f0f0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-lg": "2rem", "margin-md": "2rem", "space-sm": "0.5rem", "margin": "1rem", "space-lg": "1.5rem", "space-md": "1rem", "gutter-md": "1.5rem", "margin-lg": "3rem", "gutter": "1rem", "space-xl": "2.5rem", "space-xs": "0.25rem" }, "fontFamily": { "display-lg": [ "Playfair Display" ], "headline-lg": [ "Playfair Display" ], "headline-md": [ "Playfair Display" ], "title-md": [ "Inter" ], "body-lg": [ "Inter" ], "label-lg": [ "Inter" ], "headline-lg-mobile": [ "Playfair Display" ], "currency-display": [ "Inter" ], "body-sm": [ "Inter" ], "body-md": [ "Inter" ], "label-md": [ "Inter" ], "title-lg": [ "Inter" ], "display-lg-mobile": [ "Playfair Display" ], "headline-sm": [ "Playfair Display" ] }, "fontSize": { "display-lg": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "fontWeight": "600" } ], "headline-md": [ "24px", { "lineHeight": "32px", "fontWeight": "600" } ], "title-md": [ "16px", { "lineHeight": "24px", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-lg-mobile": [ "26px", { "lineHeight": "34px", "fontWeight": "600" } ], "currency-display": [ "28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "body-sm": [ "13px", { "lineHeight": "20px", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "fontWeight": "400" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "title-lg": [ "18px", { "lineHeight": "26px", "fontWeight": "600" } ], "display-lg-mobile": [ "34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "headline-sm": [ "20px", { "lineHeight": "28px", "fontWeight": "600" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(122,30,58,0.06)]"><div class="h-20 w-full px-gutter md:px-margin-md lg:px-margin-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="EventEase Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WLw6T5b-eGb5g_pRyjHnkM7ty1yEWjKr5EuZgQKY7ym94j_bAbJvxajZWS0YWVMtmn_quBgdrDO70uJX0bMLNxxsFD5pn-v2BPTvbnhi3cZKlR8_D_dbhoDgIxV0013Zw5s_iirONfuWCROmft--sRLGfFqOgx8ynbpB-yDTdXujcfgbcdSZpPk2run17rQXoqtgIBHQDmKS37TleTaotScS7AK3tzRQlgHCQEjtObKtV0U-gggreslKY"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none">EventEase</span><span class="font-label-md text-label-md text-on-surface-variant font-medium">AI Celebrations Companion</span></div></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container-high text-primary font-title-md"><a aria-current="page" class="px-space-md py-space-xs rounded-full transition-all bg-surface-container-high text-primary font-title-md" data-path="how-it-works" href="#">How it Works</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all" data-path="event-types" href="#">Event Types</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all" data-path="budget-planner" href="#">Budget Planner</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all" data-path="vendor-directory" href="#">Vendor Directory</a><a class="px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all" data-path="my-plans" href="#">My Plans</a></nav><div class="flex items-center gap-space-sm"><div class="hidden sm:flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant font-label-md text-label-md"><span class="material-symbols-outlined text-base text-tertiary-container">location_on</span><span>Bengaluru / Mumbai</span><span class="material-symbols-outlined text-sm">expand_more</span></div><a class="hidden md:inline-flex items-center px-space-md py-space-xs rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="login" href="#">Sign in</a><a class="inline-flex items-center px-space-lg py-space-sm rounded-full bg-primary font-label-lg text-label-lg text-on-primary hover:bg-primary-container transition-colors shadow-sm" data-path="plan-event" href="#">Plan an Event (Free)</a><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-outline-variant/30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVHBucR5g6WVBJmRdBaTm6uS1XndbEGZq6u6zVwhzo9bGQ_iLrhxEPO_r0onCPc757jCwWmQnc3kBz7x46-oD5cZb6VtgEtReQp-22NIzLbvVnqVFFYuUBA5Ut4w8YVJDMi5xc0lFXsuqynZGBBynszWV3G0QubBxk4-nOsOR3qUkvwWj8EH3Z-HccW972GDUOQ0-zOMmNS4ir7fxtRgP8Q3jT-ay1VAbZJrQHUOG1CysbvyAZ3kYP"/></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Subtle decorative ambient glow elements -->
+<div class="relative w-full overflow-hidden">
+<!-- Ambient festive light circles behind content -->
+<div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-on-tertiary-container/10 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/4 -right-24 w-[32rem] h-[32rem] rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<!-- ==================== HERO SECTION ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg pt-space-md pb-space-xl">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<!-- Top Pill & Headline Area -->
+<div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+<div class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed shadow-sm mb-space-md animate-pulse">
+<span class="material-symbols-outlined text-base text-tertiary-container" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+<span class="font-label-lg text-label-lg tracking-wide uppercase font-bold text-tertiary-container">India’s #1 AI-Powered Celebration Planner</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary tracking-tight mb-space-sm">
+            Plan Grand Indian Celebrations with Peace of Mind &amp; Zero Stress
+          </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+            From intimate Haldi mornings to 800-guest royal receptions and society Diwali pujas — generate tailored budgets in ₹ Rupees, verified vendor checklists, and step-by-step day timelines in under 60 seconds.
+          </p>
+</div>
+<!-- Hero Interactive Split Section: Wizard + Live Family Plan Preview -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start mt-space-sm">
+<!-- LEFT: Quick Interactive AI Plan Generator Card -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md relative overflow-hidden">
+<!-- Decorative celebratory top accent ribbon -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-on-tertiary-container to-secondary"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container font-semibold">auto_awesome</span>
+<span class="font-title-md text-title-md text-primary font-bold">Instant AI Event Architect</span>
+</div>
+<span class="font-label-md text-label-md px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-medium">⚡ 60-Second Setup</span>
+</div>
+<!-- Event Category Tabs -->
+<div class="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface-container-low" id="event-tab-group">
+<button class="event-tab active-tab px-3 py-2 rounded-lg font-label-md text-label-md transition-all font-semibold bg-primary text-on-primary shadow-sm flex items-center gap-1.5" onclick="setEventType('wedding', this)" type="button">
+<span class="material-symbols-outlined text-base">favorite</span>
+<span>Big Fat Wedding</span>
+</button>
+<button class="event-tab px-3 py-2 rounded-lg font-label-md text-label-md transition-all font-medium text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" onclick="setEventType('birthday', this)" type="button">
+<span class="material-symbols-outlined text-base">cake</span>
+<span>Milestone Birthday</span>
+</button>
+<button class="event-tab px-3 py-2 rounded-lg font-label-md text-label-md transition-all font-medium text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" onclick="setEventType('griha', this)" type="button">
+<span class="material-symbols-outlined text-base">roofing</span>
+<span>Griha Pravesh</span>
+</button>
+<button class="event-tab px-3 py-2 rounded-lg font-label-md text-label-md transition-all font-medium text-on-surface-variant hover:text-on-surface flex items-center gap-1.5" onclick="setEventType('puja', this)" type="button">
+<span class="material-symbols-outlined text-base">local_fire_department</span>
+<span>Community Puja</span>
+</button>
+</div>
+<!-- Inputs Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Guest Count Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex justify-between">
+<span>Guest Gathering</span>
+<span class="text-primary font-bold" id="hero-guest-display">300 Guests</span>
+</label>
+<div class="flex items-center gap-1.5 flex-wrap">
+<button class="guest-pill px-2.5 py-1.5 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors" onclick="setGuestCount(50, this)" type="button">50</button>
+<button class="guest-pill px-2.5 py-1.5 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors" onclick="setGuestCount(150, this)" type="button">150</button>
+<button class="guest-pill px-2.5 py-1.5 rounded-full text-xs font-semibold bg-primary text-on-primary transition-colors" onclick="setGuestCount(300, this)" type="button">300</button>
+<button class="guest-pill px-2.5 py-1.5 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors" onclick="setGuestCount(500, this)" type="button">500</button>
+<button class="guest-pill px-2.5 py-1.5 rounded-full text-xs font-semibold bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors" onclick="setGuestCount(1000, this)" type="button">1000+</button>
+</div>
+</div>
+<!-- City Dropdown -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">City / Destination</label>
+<div class="relative">
+<select class="w-full px-space-md py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-primary" id="hero-city-select" onchange="updateHeroCity(this.value)">
+<option value="Delhi NCR">Delhi NCR (Gurugram / Noida)</option>
+<option selected="" value="Mumbai">Mumbai &amp; Thane</option>
+<option value="Bengaluru">Bengaluru</option>
+<option value="Jaipur">Jaipur / Udaipur (Heritage)</option>
+<option value="Hyderabad">Hyderabad</option>
+<option value="Chennai">Chennai</option>
+</select>
+<span class="material-symbols-outlined text-on-surface-variant absolute right-3 top-3 pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Budget Slider -->
+<div class="flex flex-col gap-2 bg-surface-container-low p-space-md rounded-xl">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">Estimated Budget (INR Lakhs)</span>
+<span class="font-currency-display text-headline-sm text-primary font-bold" id="hero-budget-val">₹18,50,000</span>
+</div>
+<input class="w-full accent-primary h-2 bg-surface-container-high rounded-lg cursor-pointer" id="hero-budget-slider" max="6000000" min="300000" oninput="updateHeroBudget(this.value)" step="50000" type="range" value="1850000"/>
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span>₹3 Lakhs</span>
+<span>₹25 Lakhs</span>
+<span>₹60+ Lakhs (Royal)</span>
+</div>
+</div>
+<!-- Action Button & Trust -->
+<div class="flex flex-col sm:flex-row items-center gap-space-sm pt-1">
+<button class="w-full sm:flex-1 py-3.5 px-space-lg rounded-2xl bg-primary hover:bg-primary-container text-on-primary font-title-md text-title-md font-semibold transition-all shadow-md flex items-center justify-center gap-2 group" onclick="triggerHeroAIGen()" type="button">
+<span class="material-symbols-outlined text-xl group-hover:rotate-12 transition-transform text-secondary-container">auto_awesome</span>
+<span>Generate My AI Plan in 60s</span>
+</button>
+<div class="flex items-center gap-2 px-space-md py-2 rounded-xl bg-surface-container-high text-on-surface-variant text-xs font-medium w-full sm:w-auto justify-center">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Free Plan • WhatsApp Ready</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant pt-1 border-t-0">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">lock</span>
+                Strict Privacy • No Spam Calls
+              </span>
+<span class="font-medium text-primary cursor-pointer hover:underline">View 1-Click Vedic Muhurat Schedule →</span>
+</div>
+</div>
+<!-- RIGHT: High-fidelity Floating Mockup Card (Family Plan Live Preview) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Simulated Live Family Event Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl relative overflow-hidden flex flex-col gap-space-md">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Warm smiling modern Indian couple in elegant festive pastel wedding attire holding hands gracefully against a marigold and jasmine backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW_misdOhBGTuIOHDY7MNnFz6oX1bAsTjE_thsdZZdjYFkxd92-IUGMVa7e-DcqUn7jK6KZKeNS5AjaG1F8pmHCs9WwIO0DbkwubzOlaAfPSYVP_knlVFd1nes9JOEPd417w9ClPoEYLK6r97BXj20sUR7sMMD5t54ppyXB4VBS9IIxUGxVFYkE6-Yb6wD4gJ7Gm6eGb6-EzPXUC-ouqX3HK9ouwl-GlFcXZYWyMpJh-p7INuc4dfL"/>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h2 class="font-title-lg text-title-lg font-bold text-primary" id="preview-couple-name">Ananya &amp; Rohan's Shaadi</h2>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant" id="preview-event-sub">3-Day Grand Celebration • Mumbai</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-fixed text-xs font-bold">AI Active</span>
+</div>
+<!-- Budget Bar & Saved highlight -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md font-medium text-on-surface-variant">Allocated Spend</span>
+<span class="font-currency-display text-title-lg font-bold text-primary" id="preview-budget-val">₹18,50,000</span>
+</div>
+<!-- Multi-segment budget bar -->
+<div class="w-full h-2.5 bg-surface-container-highest rounded-full overflow-hidden flex">
+<div class="bg-primary h-full w-[42%]" title="Venue &amp; Catering 42%"></div>
+<div class="bg-on-tertiary-container h-full w-[24%]" title="Decor &amp; Floral 24%"></div>
+<div class="bg-secondary h-full w-[18%]" title="Photo &amp; Cinematography 18%"></div>
+<div class="bg-secondary-fixed-dim h-full w-[16%]" title="Sound &amp; Entertainment 16%"></div>
+</div>
+<div class="flex items-center justify-between text-xs pt-1">
+<span class="text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                    Saved ₹2,40,000 via AI Vendor Match
+                  </span>
+<span class="text-on-surface-variant font-medium">14/18 Tasks Done</span>
+</div>
+</div>
+<!-- Ritual Timeline Pills with Auspicious Timings -->
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between">
+<span>Ritual Timeline &amp; Muhurats</span>
+<span class="text-xs text-on-tertiary-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">wb_sunny</span> Shubh Muhurat Verified
+                  </span>
+</span>
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-surface-container-low p-2 rounded-xl flex flex-col">
+<span class="text-[11px] font-bold text-on-tertiary-container uppercase tracking-wider">Day 1 • 4 PM</span>
+<span class="font-title-md text-xs font-semibold text-on-surface mt-0.5">Mehendi &amp; Chaat</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Poolside Lawn</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded-xl flex flex-col">
+<span class="text-[11px] font-bold text-primary uppercase tracking-wider">Day 2 • 7 PM</span>
+<span class="font-title-md text-xs font-semibold text-on-surface mt-0.5">Bollywood Sangeet</span>
+<span class="text-[10px] text-on-surface-variant mt-1">Grand Ballroom</span>
+</div>
+<div class="bg-tertiary-fixed p-2 rounded-xl flex flex-col">
+<span class="text-[11px] font-bold text-tertiary uppercase tracking-wider">Day 3 • 10:14 AM</span>
+<span class="font-title-md text-xs font-semibold text-tertiary font-bold mt-0.5">Vedic Muhurtham</span>
+<span class="text-[10px] text-tertiary mt-1">Mandap Sanctum</span>
+</div>
+</div>
+</div>
+<!-- Live WhatsApp Sync Card Snippet -->
+<div class="bg-surface-container-highest/60 p-space-sm rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-sm">group</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Sharma Family Council (7)</span>
+<span class="text-[11px] text-on-surface-variant">Chachaji approved Caterer Menu A</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest text-[11px] font-bold text-secondary">Synced</span>
+</div>
+</div>
+<!-- Mini AI Insight Callout -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl mt-0.5">lightbulb</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Intelligent Guest Seating &amp; Dietary Engine</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Auto-categorizes 85 Jain/Pure Veg guests and alerts your kitchen head on Live counters.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== EVENT TYPES SECTION ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl bg-surface-container-low/60">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1 max-w-2xl">
+<span class="font-label-md text-label-md uppercase tracking-widest text-primary font-bold">Every Milestone Covered</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Tailored for Every Auspicious Occasion</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Indian celebrations involve unique traditions, sacred timings, and dietary sensibilities. EventEase AI adapts directly to your custom customs.
+            </p>
+</div>
+<div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> 4,800+ Verified Regional Specialists
+          </div>
+</div>
+<!-- 4 Interactive Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1: Weddings -->
+<div class="group bg-surface-container-lowest rounded-2xl p-space-md shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-full h-40 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional Indian wedding ceremony setup with exquisite marigold mandap, golden temple pillars, and soft sacred fire smoke under warm fairy lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWOQT0WvIcNset072h7EPIV0BZeeAQvLim836meMxxkA_MFdycbFmelqECY8e5NVuQJMp6oXDYDOwaqr0Q0OKEEEgemwQUEj9XlWm3hC2Q5JqFxF9OkdwynXqMD5aheplBPjSQtogb8y2zepSPU6HkKbivPJWT7EUJ7rF6yz5286T9_jIEs4O2H_hXePBcalgUTRY2wnBY9ZS3U00EqJvUVGac2iCxaCtNCGTYhdDNYzgiF0rxWWgB"/>
+<div class="absolute top-2.5 left-2.5 bg-primary/90 text-on-primary text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">diamond</span>
+<span>Weddings</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-lg text-title-lg font-bold text-primary group-hover:text-primary-container transition-colors">
+                  Weddings &amp; Pre-Rituals
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+                  Roka, Mehendi, Haldi, Sangeet, Vedic Vivah &amp; Grand Receptions. Multi-event run sheets, regional catering menus, and baraat logistics.
+                </p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Guest Scale: <strong>100 - 1500+</strong></span>
+<span class="text-primary font-bold">₹10L - ₹1.5Cr</span>
+</div>
+<a class="inline-flex items-center justify-between w-full py-2 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Explore Shaadi Planner</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 2: Birthdays & Anniversaries -->
+<div class="group bg-surface-container-lowest rounded-2xl p-space-md shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-full h-40 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Joyful 1st birthday and milestone golden anniversary Indian family party with warm ambient bokeh fairy lighting, bespoke balloon arches, and silver tableware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbOvVqxqONcQGmGSoTVLHcBsIZ0soQa42wFdx-iVVbMrGHcT3Wn2KbD3BtEONriglDDYXpUQdvfKf_-b7Ik-E12Fa1kgBUnuI0nQPghvBMOznQD4d9Nn-LcH85_zJD6qw84LJB78_ViNeu_4jaa-MQnnjKMoN3FadGi0QAtx1Bk1nbXBmwyLWsiM0kShXJ62tlpyG6Vd_J6up0jmIINsa_SZN9Ow2jNTy0lK-V9u6zvQVvE67VK21r"/>
+<div class="absolute top-2.5 left-2.5 bg-on-tertiary-container/90 text-surface-container-lowest text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">cake</span>
+<span>Milestones</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-lg text-title-lg font-bold text-primary group-hover:text-primary-container transition-colors">
+                  Milestone Birthdays &amp; Jubilees
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+                  1st Birthdays, 25th Silver Jubilees, 60th Shashti Poorthi. Curated anchors, customized theme backdrops, fun activities, and live food stalls.
+                </p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Guest Scale: <strong>40 - 250</strong></span>
+<span class="text-primary font-bold">₹1.5L - ₹12L</span>
+</div>
+<a class="inline-flex items-center justify-between w-full py-2 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Explore Milestone Kits</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 3: Pujas & Festivals -->
+<div class="group bg-surface-container-lowest rounded-2xl p-space-md shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-full h-40 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Auspicious Griha Pravesh and traditional community Puja ceremony in India with glowing brass diyas, vibrant yellow-orange marigold garlands, and Vedic homam rituals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmQ4Q-ttxWuCzRlV0Ab4dtSQM0TPcWNY41gjCi_F8vWmmK921xE7O83EWKKp6mwWIeVhOQ_WMwK96PlPqxFc6x_eq92c-hevfGpNug7eT82KIKF1HJ6jig5rfyWQAqDKjMsKxai8tCe6MHrLsImLRcqZso9RNejjw1WLaFEX881OeT3neqgqW9uDPhb5ILrnvcE1V98Bgr8aCvJQ2Q81TBQqX5qc65U7QVeXmpZeAoGiXkAiNxwQz3"/>
+<div class="absolute top-2.5 left-2.5 bg-secondary/90 text-on-secondary text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">temple_hindu</span>
+<span>Puja &amp; Utsav</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-lg text-title-lg font-bold text-primary group-hover:text-primary-container transition-colors">
+                  Pujas &amp; Society Festivals
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+                  Ganesh Utsav, Navratri Garba, Society Diwali, Griha Pravesh. Certified Pandits, authentic Samagri checklists, and Prasad distribution plans.
+                </p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Guest Scale: <strong>30 - 800+</strong></span>
+<span class="text-primary font-bold">₹75K - ₹18L</span>
+</div>
+<a class="inline-flex items-center justify-between w-full py-2 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Explore Puja Checklists</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Card 4: Corporate & Social Galas -->
+<div class="group bg-surface-container-lowest rounded-2xl p-space-md shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="flex flex-col gap-space-sm">
+<div class="w-full h-40 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Chic Indian corporate gala dinner and celebration evening with dramatic warm chandeliers, round banquet tables, and stage audio visual setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy0yCiGd0cX9b0yxxHHyyoois_coggz_8gw2LjACT5duLaqqI-P44Er7qRMd6liZYO1rrCB3Qi-5BkGlneBiU5M-RwtBO8K-ckAFYNp1QYEZ5DPT_3afrju-HAtPSEnGaezPjwO7Fp0F7Au_Lj16UqT-WrTdZeBWDTIKChK90-t-JWxcRZwMrG_cEdHV0lglmd3nDrsTmmOBqbSTNiSnA525vjT7kJlHahR9cAKAofpUD7J7EH4r5H"/>
+<div class="absolute top-2.5 left-2.5 bg-primary-container/90 text-on-primary text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">groups</span>
+<span>Galas &amp; Social</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-lg text-title-lg font-bold text-primary group-hover:text-primary-container transition-colors">
+                  Galas &amp; Family Reunions
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-3">
+                  Annual gatherings, Alumni reunions, award celebrations, and multi-generational get-togethers with structured ticketing &amp; AV support.
+                </p>
+</div>
+</div>
+<div class="flex flex-col gap-2 pt-space-sm">
+<div class="flex items-center justify-between text-xs text-on-surface-variant">
+<span>Guest Scale: <strong>80 - 600</strong></span>
+<span class="text-primary font-bold">₹4L - ₹45L</span>
+</div>
+<a class="inline-flex items-center justify-between w-full py-2 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors" href="#">
+<span>Explore Gala Kits</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== "HOW IT WORKS" 3-STEP JOURNEY ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<div class="text-center max-w-2xl mx-auto flex flex-col gap-2">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">Stress-Free Orchestration</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">How EventEase Crafts Your Perfect Celebration</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            No endless phone calls or notebook scribbles. Your personal AI celebration manager coordinates the entire family with effortless grace.
+          </p>
+</div>
+<!-- 3 Connected Steps -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-2xl">chat_bubble</span>
+</div>
+<span class="font-display-lg text-headline-lg text-primary/20 font-bold">01</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">Share Traditions &amp; Vision</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Tell AI your city, auspicious dates, guest headcount, and unique regional customs—whether you need Punjabi dhol or Kerala sadhya arrangements.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-on-tertiary-container text-base">psychology</span>
+<span class="text-xs text-on-surface-variant font-medium">Understands North, South, Gujarati, Bengali rituals</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-2xl bg-on-tertiary-container/10 flex items-center justify-center text-on-tertiary-container font-bold">
+<span class="material-symbols-outlined text-2xl">calculate</span>
+</div>
+<span class="font-display-lg text-headline-lg text-on-tertiary-container/20 font-bold">02</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">Smart Lakhs Budget &amp; Milestones</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Receive instant granular Indian Rupee breakdowns (Catering, Mandap Decor, Photography, Shagun buffer) calibrated to current city market rates.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-secondary text-base">savings</span>
+<span class="text-xs text-on-surface-variant font-medium">Prevents last-minute hidden overheads by 22%</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col gap-space-md relative z-10">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary font-bold">
+<span class="material-symbols-outlined text-2xl">mark_chat_read</span>
+</div>
+<span class="font-display-lg text-headline-lg text-secondary/20 font-bold">03</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<h3 class="font-title-lg text-title-lg font-bold text-on-surface">WhatsApp Sync &amp; Verified Vendors</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Invite parents, chachas, and cousins onto an intuitive WhatsApp group link. Compare pre-screened local caterers, mehendi artists, and florists.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-xl flex items-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-primary text-base">send_to_mobile</span>
+<span class="text-xs text-on-surface-variant font-medium">Single-tap approval for elders without app installs</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== LIVE INTERACTIVE BUDGET ESTIMATOR & CALCULATOR ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1 max-w-2xl">
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Real-time Financial Clarity</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Indian Celebration Budget Calculator (₹ Lakhs)</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Adjust your target overall budget to see verified category distributions based on analysis of 12,000+ Indian events.
+            </p>
+</div>
+<div class="flex items-center gap-2 px-space-md py-1.5 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-semibold">
+<span class="material-symbols-outlined text-xs text-primary">tune</span>
+            Interactive Dynamic Model
+          </div>
+</div>
+<!-- Calculator Bento Container -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-stretch">
+<!-- Controller Column -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-md">
+<span class="font-title-md text-title-md font-bold text-on-surface">Target Event Budget</span>
+<!-- Value Readout Box -->
+<div class="bg-surface-container-low p-space-md rounded-2xl flex flex-col items-center justify-center text-center">
+<span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Total Projected Spend</span>
+<span class="font-currency-display text-display-lg text-primary font-extrabold my-1" id="calc-total-display">₹8,50,000</span>
+<span class="text-xs font-medium text-secondary" id="calc-words-display">Eight Lakh Fifty Thousand Rupees</span>
+</div>
+<!-- Interactive Range Slider -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="flex justify-between items-center text-xs font-semibold text-on-surface-variant">
+<span>₹2 Lakhs (Intimate)</span>
+<span>₹50 Lakhs (Extravagant)</span>
+</div>
+<input class="w-full accent-primary h-2.5 bg-surface-container-high rounded-lg cursor-pointer" id="budget-calc-slider" max="5000000" min="200000" oninput="runBudgetCalc(this.value)" step="25000" type="range" value="850000"/>
+</div>
+<!-- Event Scale Selector Chips -->
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Quick Budget Presets</span>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 px-1 rounded-xl text-xs font-semibold bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all text-center" onclick="setPresetBudget(500000)" type="button">₹5.0 Lakhs</button>
+<button class="py-2 px-1 rounded-xl text-xs font-semibold bg-primary text-on-primary transition-all text-center" onclick="setPresetBudget(850000)" type="button">₹8.5 Lakhs</button>
+<button class="py-2 px-1 rounded-xl text-xs font-semibold bg-surface-container-high hover:bg-surface-variant text-on-surface transition-all text-center" onclick="setPresetBudget(2500000)" type="button">₹25 Lakhs</button>
+</div>
+</div>
+</div>
+<!-- AI Local City Saving Tip -->
+<div class="p-space-md rounded-2xl bg-secondary/10 flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-xl font-bold mt-0.5">tips_and_updates</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-md text-label-md font-bold text-secondary">AI Concierge Saving Tip</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Booking catering 4 months ahead on peak Muhurtham dates in Mumbai saves an average of <strong class="text-primary font-bold">₹45,000</strong> on vendor surcharges.
+                </p>
+</div>
+</div>
+</div>
+<!-- Breakdown Distribution Column -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<span class="font-title-md text-title-md font-bold text-on-surface">Recommended Allocation</span>
+<span class="text-xs font-semibold text-on-surface-variant">Standard Regional Ratio</span>
+</div>
+<!-- List of Breakdown Bars with Dynamic Calculations -->
+<div class="flex flex-col gap-space-md">
+<!-- 1. Banquet & Catering (40%) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-semibold text-on-surface">Banquet, Lawn &amp; Catering (40%)</span>
+</div>
+<span class="font-bold text-primary font-title-md" id="alloc-catering">₹3,40,000</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-300" style="width: 40%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">Includes 3 Live chaat counters, welcome drinks &amp; dessert spread</span>
+</div>
+<!-- 2. Floral & Theme Decor (22%) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-on-tertiary-container"></span>
+<span class="font-semibold text-on-surface">Floral, Mandap &amp; Theme Decor (22%)</span>
+</div>
+<span class="font-bold text-on-surface font-title-md" id="alloc-decor">₹1,87,000</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="bg-on-tertiary-container h-full rounded-full transition-all duration-300" style="width: 22%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">Entrance arch, photo backdrop, fairy lighting &amp; stage arrangement</span>
+</div>
+<!-- 3. Photo & Cinematic Film (15%) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-semibold text-on-surface">Photo &amp; 4K Cinematic Reel Film (15%)</span>
+</div>
+<span class="font-bold text-on-surface font-title-md" id="alloc-photo">₹1,27,500</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-300" style="width: 15%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">Drone coverage, candid teasers, hardbound luxury coffee table album</span>
+</div>
+<!-- 4. Sound, DJ & Entertainment (10%) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-semibold text-on-surface">Sound, DJ &amp; Sangeet Anchor (10%)</span>
+</div>
+<span class="font-bold text-on-surface font-title-md" id="alloc-sound">₹85,000</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="bg-primary-container h-full rounded-full transition-all duration-300" style="width: 10%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">Wireless mics, line-array speakers, LED dance floor &amp; Dhol artists</span>
+</div>
+<!-- 5. Contingency & Shagun Buffers (13%) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-center text-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-tint"></span>
+<span class="font-semibold text-on-surface">Emergency &amp; Shagun Buffers (13%)</span>
+</div>
+<span class="font-bold text-on-surface font-title-md" id="alloc-buffer">₹1,10,500</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-high overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full transition-all duration-300" style="width: 13%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant">Gratuities, unforeseen transport, extra sweets boxes &amp; priest Dakshina</span>
+</div>
+</div>
+<!-- Bottom CTA Link -->
+<div class="pt-space-sm flex items-center justify-between border-t-0">
+<span class="text-xs text-on-surface-variant font-medium">Export this breakdown directly as a PDF or Excel sheet</span>
+<button class="px-space-md py-2 rounded-xl bg-surface-container-high hover:bg-surface-variant font-label-md text-label-md text-primary font-bold transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Download Budget Sheet</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== REAL FAMILY TESTIMONIALS & TRUST STATS ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<!-- Big Numerical Trust Strip -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm text-center">
+<div class="flex flex-col items-center">
+<span class="font-currency-display text-display-lg text-primary font-black">₹42+ Cr</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-1">Celebration Budgets Handled</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-currency-display text-display-lg text-secondary font-black">18,400+</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-1">Happy Families Across India</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-currency-display text-display-lg text-on-tertiary-container font-black">4.9 / 5</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-1">Rating from 4,200+ Reviews</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-currency-display text-display-lg text-primary-container font-black">28 Cities</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium mt-1">Metros &amp; Tier-1 Destinations</span>
+</div>
+</div>
+<!-- Section Intro -->
+<div class="text-center max-w-2xl mx-auto flex flex-col gap-2">
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Cherished Experiences</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Loved by Parents, Elders &amp; New-Gen Couples</h2>
+</div>
+<!-- 3 Testimonial Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-lg">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between gap-space-md relative">
+<div class="flex flex-col gap-space-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                “My father was skeptical about using an ‘AI tool’ for my sister’s Jaipur wedding. But the WhatsApp daily milestone summary and instant Hindi translation won him over completely. It saved us ₹3.8 Lakhs on the royal lawn package alone!”
+              </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Portrait of young professional Indian gentleman with warm smile in beige linen kurta against festive warm city backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBi-oo64eGiEFGla7uMmBzhi-Bo508fBrmWqIIPjh3Pa4XXQ2UizmOKFUTQZe2M5_QuCEe-mtfICVjJoKsVUAcHr7-9nYJuCxA5V_0l1AqyhvcKnssNjD1ZJXQyt001Ib37BpgXa6cG63F-BnxWLTYKGG_H_DqhuaNX798KfYPzwjjPU03LXLMrhvED4LCx7GIBTcb8KUEsVT_-ruclVdri4m9HEXhnoWziX9n6h9rPnmxJBMNJfLUe"/>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Vikramaditya Sharma</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Jaipur Heritage Wedding (650 guests)</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between gap-space-md relative">
+<div class="flex flex-col gap-space-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                “Organizing our society’s 9-day Navratri Garba for 1,200 residents used to be chaos. EventEase generated our sound vendor RFPs, security checkpoints, and Prasad distribution matrices in minutes. Pure magic!”
+              </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Portrait of dignified middle-aged Indian woman wearing traditional silk sari with glasses smiling warmly indoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7F1wu4gpT6FbrPvspggtcJuUkeaOZBMl9iPDObkZHo2dahL04jskavPf_RFmqLQuvwsoY4J6krRYGiOsKiHcbspIUB0QpPQDe1Cn7rSNkdBArE2AXEIJTzBk74kTCLLILZeTJq7v44eurLMDp4m6UfhoZxFHaBWYylfpymG2VskzP2ivJNBqqAioblWZRNDT9BREGVh_EiE0T9hdE1_TfrQhrmV8fu4D6loUN11QgE26AA36s2nbz"/>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Sunita K. Patel</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Secretary, Palm Meadows Society, Mumbai</span>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between gap-space-md relative">
+<div class="flex flex-col gap-space-sm">
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface italic leading-relaxed">
+                “We both work high-pressure tech jobs in Bengaluru and had zero time to micromanage vendors for our parents’ 60th Shashti Poorthi. EventEase matched us with authentic South Indian caterers &amp; florists with zero stress.”
+              </p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="Portrait of happy modern south Indian tech couple smiling outdoors in garden Bangalore setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBo0laJhRjYUxdpnZVW6ElpShYSACreCdB1vdwqtkD0g3GZN1BBgdu1F0g2MQSRItRdr-MUXyoOqiG3AQyONvmHbF87YfiPigwq7Ag4haoXInrFX0FKwcXdSQlMnBfL5k7fwQUSVtZXas6O9Cmj5ePMS9qlUbmGvpVTUyoTr8BWrg9jYTqpD4XGJAFBfYCO-ju8InREGIJOxhEegpV_e9tTSlKeEddlZ6Ca4Gtw8i-zOb3B8L3C5rL_"/>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md font-bold text-primary">Priya &amp; Kartik Iyer</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Bengaluru Milestone Celebration</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== PROMINENT FESTIVE MAROON CTA SECTION ==================== -->
+<section class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl">
+<div class="max-w-7xl mx-auto rounded-3xl bg-primary text-on-primary p-space-lg md:p-space-xl relative overflow-hidden shadow-2xl">
+<!-- Subtle decorative mandala overlay circle -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary-container/60 blur-2xl pointer-events-none"></div>
+<div class="absolute top-0 right-1/4 w-40 h-40 rounded-full bg-on-tertiary-container/10 blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto gap-space-md">
+<div class="inline-flex items-center gap-2 px-space-md py-1 rounded-full bg-primary-container text-secondary-container text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">celebration</span>
+<span>Auspicious Beginnings</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-primary tracking-tight">
+            Ready to Make Your Family Celebration Effortless?
+          </h2>
+<p class="font-body-lg text-body-lg text-surface-container-high max-w-2xl leading-relaxed">
+            Join thousands of Indian families planning stress-free weddings, pujas, and milestone anniversaries. No upfront fees. No endless negotiation calls.
+          </p>
+<!-- Dual Button Action Group -->
+<div class="flex flex-col sm:flex-row items-center gap-space-md w-full justify-center pt-space-xs">
+<button class="w-full sm:w-auto px-space-xl py-4 rounded-full bg-on-tertiary-container hover:bg-tertiary-fixed text-primary font-title-lg text-title-lg font-bold shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2" onclick="triggerHeroAIGen()" type="button">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+<span>Start Planning for Free</span>
+</button>
+<a class="w-full sm:w-auto px-space-lg py-4 rounded-full bg-surface-container-lowest/15 hover:bg-surface-container-lowest/25 text-on-primary font-title-md text-title-md font-semibold transition-colors flex items-center justify-center gap-2" href="#">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+<span>Schedule 1-on-1 Consultation</span>
+</a>
+</div>
+<!-- Quick WhatsApp Pill -->
+<div class="inline-flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest/10 text-surface-container-high text-xs font-medium backdrop-blur-sm mt-space-sm">
+<span class="material-symbols-outlined text-secondary-container text-base font-bold">chat</span>
+<span>Prefer WhatsApp? Text <strong>“NAMASTE”</strong> to +91 98200 12345 for immediate concierge setup.</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Interactive Logic Script -->
+<script>
+    // State storage for interactive hero & calculator
+    const state = {
+      eventType: 'wedding',
+      guestCount: 300,
+      city: 'Mumbai',
+      budget: 1850000
+    };
+
+    function setEventType(type, el) {
+      state.eventType = type;
+      document.querySelectorAll('.event-tab').forEach(tab => {
+        tab.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+        tab.classList.add('text-on-surface-variant', 'font-medium');
+      });
+      el.classList.add('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+      el.classList.remove('text-on-surface-variant', 'font-medium');
+
+      // Update right-hand preview mockup accordingly
+      const coupleName = document.getElementById('preview-couple-name');
+      const eventSub = document.getElementById('preview-event-sub');
+
+      if (type === 'wedding') {
+        coupleName.innerText = "Ananya & Rohan's Shaadi";
+        eventSub.innerText = "3-Day Grand Celebration • " + state.city;
+      } else if (type === 'birthday') {
+        coupleName.innerText = "Aarav's 1st Royal Jubilee";
+        eventSub.innerText = "Jungle Carnival Theme • " + state.city;
+      } else if (type === 'griha') {
+        coupleName.innerText = "The Kulkarni Griha Pravesh";
+        eventSub.innerText = "Vastu Shanti & Mahaprasad • " + state.city;
+      } else if (type === 'puja') {
+        coupleName.innerText = "Sarvajanik Utsav Samiti";
+        eventSub.innerText = "Community Garba & Feast • " + state.city;
+      }
+    }
+
+    function setGuestCount(count, el) {
+      state.guestCount = count;
+      document.querySelectorAll('.guest-pill').forEach(pill => {
+        pill.classList.remove('bg-primary', 'text-on-primary');
+        pill.classList.add('bg-surface-container-high', 'text-on-surface');
+      });
+      el.classList.add('bg-primary', 'text-on-primary');
+      el.classList.remove('bg-surface-container-high', 'text-on-surface');
+      document.getElementById('hero-guest-display').innerText = count + " Guests";
+    }
+
+    function updateHeroCity(cityVal) {
+      state.city = cityVal;
+      const eventSub = document.getElementById('preview-event-sub');
+      eventSub.innerText = eventSub.innerText.split('•')[0] + '• ' + cityVal;
+    }
+
+    function updateHeroBudget(val) {
+      state.budget = parseInt(val, 10);
+      const formatted = "₹" + Number(val).toLocaleString('en-IN');
+      document.getElementById('hero-budget-val').innerText = formatted;
+      document.getElementById('preview-budget-val').innerText = formatted;
+    }
+
+    function triggerHeroAIGen() {
+      const formatted = "₹" + Number(state.budget).toLocaleString('en-IN');
+      alert(`✨ EventEase AI Architect activated!\n\nEvent: ${state.eventType.toUpperCase()}\nCity: ${state.city}\nGuests: ${state.guestCount}\nBudget: ${formatted}\n\nYour customized checklist & WhatsApp dashboard are being generated.`);
+    }
+
+    // Dynamic Budget Calculator logic
+    function runBudgetCalc(val) {
+      const budget = parseInt(val, 10);
+      document.getElementById('calc-total-display').innerText = "₹" + budget.toLocaleString('en-IN');
+      
+      // Compute allocations
+      const catering = Math.round(budget * 0.40);
+      const decor = Math.round(budget * 0.22);
+      const photo = Math.round(budget * 0.15);
+      const sound = Math.round(budget * 0.10);
+      const buffer = Math.round(budget * 0.13);
+
+      document.getElementById('alloc-catering').innerText = "₹" + catering.toLocaleString('en-IN');
+      document.getElementById('alloc-decor').innerText = "₹" + decor.toLocaleString('en-IN');
+      document.getElementById('alloc-photo').innerText = "₹" + photo.toLocaleString('en-IN');
+      document.getElementById('alloc-sound').innerText = "₹" + sound.toLocaleString('en-IN');
+      document.getElementById('alloc-buffer').innerText = "₹" + buffer.toLocaleString('en-IN');
+
+      // Simple Lakh verbal formatter
+      const inLakhs = (budget / 100000).toFixed(2);
+      document.getElementById('calc-words-display').innerText = `Approx. ${inLakhs} Lakh Rupees`;
+    }
+
+    function setPresetBudget(val) {
+      const slider = document.getElementById('budget-calc-slider');
+      slider.value = val;
+      runBudgetCalc(val);
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low shadow-[0_-1px_12px_rgba(122,30,58,0.03)]"><div class="w-full px-gutter md:px-margin-md lg:px-margin-lg py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-gutter-lg"><div class="lg:col-span-2 flex flex-col gap-space-md pr-0 lg:pr-space-xl"><div class="flex items-center gap-space-sm"><img alt="EventEase Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WLw6T5b-eGb5g_pRyjHnkM7ty1yEWjKr5EuZgQKY7ym94j_bAbJvxajZWS0YWVMtmn_quBgdrDO70uJX0bMLNxxsFD5pn-v2BPTvbnhi3cZKlR8_D_dbhoDgIxV0013Zw5s_iirONfuWCROmft--sRLGfFqOgx8ynbpB-yDTdXujcfgbcdSZpPk2run17rQXoqtgIBHQDmKS37TleTaotScS7AK3tzRQlgHCQEjtObKtV0U-gggreslKY"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight">EventEase</span></div><p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Harmonizing sacred rituals, modern celebrations, and intelligent planning across India. Thoughtful Muhurat scheduling, regional vendor matchmaking, and Lakh/Crore budget clarity.</p><div class="inline-flex items-center gap-space-sm px-space-md py-space-sm rounded-xl bg-surface-container-highest max-w-fit"><span class="material-symbols-outlined text-secondary font-bold">chat</span><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-semibold">24/7 WhatsApp AI Assistant</span><span class="font-body-sm text-body-sm text-on-surface-variant">Instant quotes, Muhurat checks &amp; guest RSVPs</span></div></div></div><div class="flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-primary font-semibold">Celebration Types</span><div class="flex flex-col gap-space-xs font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="event-types" href="#">Wedding Planner (Shaadi)</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="event-types" href="#">Milestone Birthdays</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="event-types" href="#">Housewarming (Griha Pravesh)</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="event-types" href="#">Community Puja &amp; Festivals</a></div></div><div class="flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-primary font-semibold">Planning Tools</span><div class="flex flex-col gap-space-xs font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="budget-planner" href="#">Budget Estimator (₹ INR)</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="vendor-directory" href="#">Vendor Checklists</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="how-it-works" href="#">Muhurat Timing Finder</a><a class="text-on-surface-variant hover:text-primary transition-colors" data-path="my-plans" href="#">Guest List &amp; Seating Matrix</a></div></div><div class="flex flex-col gap-space-sm"><span class="font-title-md text-title-md text-primary font-semibold">Connect &amp; Support</span><div class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant"><span>New Delhi • Mumbai • Bengaluru</span><span>Hyderabad • Chennai • Kolkata</span><a class="text-secondary hover:text-on-secondary-container transition-colors font-medium mt-space-xs" data-path="how-it-works" href="#">Explore Concierge Services →</a></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 EventEase Technologies India. Designed with festive warmth &amp; precision.</p><div class="flex items-center gap-space-lg font-body-sm text-body-sm text-on-surface-variant"><a class="hover:text-primary transition-colors" data-path="how-it-works" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" data-path="how-it-works" href="#">Terms of Celebration</a><a class="hover:text-primary transition-colors" data-path="how-it-works" href="#">Safety Guidelines</a></div></div></div></footer></body></html>

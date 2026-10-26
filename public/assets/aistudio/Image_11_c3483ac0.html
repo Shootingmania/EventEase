@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_standard" name="shell-type"/>
+<title>EventEase - AI Event Planning Assistant</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+  @layer base {
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #fcf9f8;
+      color: #1b1c1c;
+    }
+    body {
+      overscroll-behavior: none;
+    }
+    main > :first-child {
+      margin-top: 0 !important;
+    }
+    main > :last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-container": "#593c00",
+          "on-tertiary": "#ffffff",
+          "primary-fixed": "#ffd9df",
+          "on-primary": "#ffffff",
+          "inverse-surface": "#303030",
+          "on-primary-container": "#ff8aa4",
+          "on-secondary-container": "#007166",
+          "surface-container-lowest": "#ffffff",
+          "surface-container-high": "#eae7e7",
+          "on-secondary-fixed-variant": "#005048",
+          "on-background": "#1b1c1c",
+          "tertiary-fixed": "#ffdead",
+          "error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#81233f",
+          "background": "#fcf9f8",
+          "surface-container-highest": "#e4e2e1",
+          "secondary-fixed-dim": "#6fd8c8",
+          "on-secondary-fixed": "#00201c",
+          "outline-variant": "#dbc0c4",
+          "tertiary-fixed-dim": "#ffba3b",
+          "on-error": "#ffffff",
+          "surface-variant": "#e4e2e1",
+          "secondary-container": "#8cf5e4",
+          "on-tertiary-fixed": "#281900",
+          "secondary-fixed": "#8cf5e4",
+          "on-surface-variant": "#554245",
+          "surface-dim": "#dcd9d9",
+          "on-secondary": "#ffffff",
+          "inverse-on-surface": "#f3f0f0",
+          "on-tertiary-fixed-variant": "#604100",
+          "on-tertiary-container": "#e6a100",
+          "primary-fixed-dim": "#ffb1c0",
+          "primary": "#5c0325",
+          "primary-container": "#7a1e3a",
+          "on-error-container": "#93000a",
+          "surface-container": "#f0eded",
+          "on-surface": "#1b1c1c",
+          "surface-tint": "#a03b56",
+          "surface-bright": "#fcf9f8",
+          "inverse-primary": "#ffb1c0",
+          "error": "#ba1a1a",
+          "surface": "#fcf9f8",
+          "outline": "#887175",
+          "on-primary-fixed": "#3f0016",
+          "surface-container-low": "#f6f3f2",
+          "tertiary": "#3d2700",
+          "secondary": "#006a60"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-lg": "1.5rem",
+          "space-sm": "0.5rem",
+          "margin-lg": "3rem",
+          "gutter": "1rem",
+          "gutter-lg": "2rem",
+          "margin": "1rem",
+          "space-md": "1rem",
+          "space-xl": "2.5rem",
+          "gutter-md": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin-md": "2rem"
+        },
+        "fontFamily": {
+          "headline-sm": ["Playfair Display"],
+          "label-md": ["Inter"],
+          "currency-display": ["Inter"],
+          "body-md": ["Inter"],
+          "headline-md": ["Playfair Display"],
+          "headline-lg-mobile": ["Playfair Display"],
+          "body-sm": ["Inter"],
+          "label-lg": ["Inter"],
+          "title-lg": ["Inter"],
+          "body-lg": ["Inter"],
+          "display-lg-mobile": ["Playfair Display"],
+          "display-lg": ["Playfair Display"],
+          "headline-lg": ["Playfair Display"],
+          "title-md": ["Inter"]
+        },
+        "fontSize": {
+          "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+          "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+          "currency-display": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "body-md": ["15px", {"lineHeight": "24px", "fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+          "headline-lg-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "600"}],
+          "body-sm": ["13px", {"lineHeight": "20px", "fontWeight": "400"}],
+          "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "title-lg": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+          "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+          "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+          "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+          "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- ==================== 1. TOP NAVIGATION WITH WIZARD BAR ==================== -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-md border-b border-outline-variant/40 shadow-sm">
+<div class="h-28 flex flex-col justify-between">
+<!-- Primary Bar -->
+<div class="max-w-7xl mx-auto w-full h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+<!-- Logo + Tagline -->
+<a class="flex items-center gap-3 group" data-path="home" href="#">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-tight">EventEase</span>
+<span class="font-label-md text-[10px] text-on-surface-variant tracking-wider uppercase">AI Event Planning Assistant</span>
+</div>
+</a>
+<!-- Navigation Links -->
+<nav class="hidden lg:flex items-center gap-1 xl:gap-2" data-active-classes="bg-surface-container text-primary font-label-lg shadow-xs">
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="how-it-works" href="#how-it-works">How it works</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="event-types" href="#event-types">Event types</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="features" href="#features">Features</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="sample-plan" href="#sample-plan">Sample plan</a>
+<a class="px-3 py-1.5 rounded-full font-label-lg text-label-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-all" data-path="testimonials" href="#testimonials">Testimonials</a>
+</nav>
+<!-- Right Action Group -->
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/60 font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span>Bengaluru / Mumbai</span>
+<span class="material-symbols-outlined text-xs">expand_more</span>
+</div>
+<a class="hidden md:inline-flex items-center px-4 py-2 rounded-full font-label-lg text-label-lg text-primary hover:bg-surface-container transition-all" data-path="sign-in" href="#">Sign in</a>
+<a class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-on-primary font-label-lg text-label-lg shadow-sm hover:bg-primary-container transition-all hover:shadow-md" data-path="step-4-set-the-mood" href="#step-4">Start Planning</a>
+</div>
+</div>
+<!-- Wizard Sub-Header / Step Progress Bar -->
+<div class="w-full bg-surface-container-low/80 border-t border-outline-variant/30 py-1.5 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+<!-- Breadcrumbs & Step Indicator -->
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant overflow-x-auto py-0.5">
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-1-event-basics" href="#">1. Basics</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-2-date-and-venue" href="#">2. Date &amp; City</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors whitespace-nowrap" data-path="step-3-whos-coming" href="#">3. Who's coming?</a>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="font-label-lg text-primary flex items-center gap-1.5 whitespace-nowrap font-semibold bg-surface-container px-2.5 py-0.5 rounded-full">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            Step 4: Set the mood (Rituals &amp; Ambience)
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">chevron_right</span>
+<span class="opacity-60 whitespace-nowrap">5. Review &amp; Budget</span>
+</div>
+<!-- Progress indicator -->
+<div class="hidden md:flex items-center gap-2 font-label-md text-xs text-on-surface-variant font-medium">
+<span>Step 4 of 5 (80%)</span>
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-28"><div class="flex flex-col w-full">
+<!-- Interactive State Controller -->
+<script>
+    function toggleCeremony(id) {
+      const card = document.getElementById('ceremony-' + id);
+      const checkbox = document.getElementById('chk-' + id);
+      const isChecked = checkbox.getAttribute('data-checked') === 'true';
+      if (isChecked) {
+        checkbox.setAttribute('data-checked', 'false');
+        checkbox.innerHTML = '';
+        card.classList.remove('bg-primary/5', 'shadow-sm');
+        card.classList.add('bg-surface-container-low');
+      } else {
+        checkbox.setAttribute('data-checked', 'true');
+        checkbox.innerHTML = '<span class="material-symbols-outlined text-sm text-on-secondary font-bold">check</span>';
+        card.classList.add('bg-primary/5', 'shadow-sm');
+        card.classList.remove('bg-surface-container-low');
+      }
+      updateCeremonyCount();
+    }
+
+    function updateCeremonyCount() {
+      const active = document.querySelectorAll('[id^="chk-"][data-checked="true"]').length;
+      const counter = document.getElementById('ceremony-count-pill');
+      if (counter) counter.innerText = `${active} Functions Selected`;
+    }
+
+    function selectVenue(el) {
+      document.querySelectorAll('.venue-card').forEach(c => {
+        c.classList.remove('ring-2', 'ring-primary', 'bg-surface-container-lowest', 'shadow-md');
+        c.classList.add('bg-surface-container-low');
+        const badge = c.querySelector('.selection-badge');
+        if (badge) badge.classList.add('hidden');
+      });
+      el.classList.add('ring-2', 'ring-primary', 'bg-surface-container-lowest', 'shadow-md');
+      el.classList.remove('bg-surface-container-low');
+      const badge = el.querySelector('.selection-badge');
+      if (badge) badge.classList.remove('hidden');
+    }
+
+    function selectAesthetic(el) {
+      document.querySelectorAll('.aesthetic-card').forEach(c => {
+        c.classList.remove('ring-2', 'ring-primary', 'bg-primary/5', 'shadow-md');
+        c.classList.add('bg-surface-container-low');
+        const badge = c.querySelector('.aesthetic-badge');
+        if (badge) badge.classList.add('hidden');
+      });
+      el.classList.add('ring-2', 'ring-primary', 'bg-primary/5', 'shadow-md');
+      el.classList.remove('bg-surface-container-low');
+      const badge = el.querySelector('.aesthetic-badge');
+      if (badge) badge.classList.remove('hidden');
+    }
+
+    function selectPalette(el) {
+      document.querySelectorAll('.palette-card').forEach(c => {
+        c.classList.remove('ring-2', 'ring-primary', 'bg-surface-container-lowest', 'shadow-md');
+        c.classList.add('bg-surface-container-low');
+        const badge = c.querySelector('.palette-badge');
+        if (badge) badge.classList.add('hidden');
+      });
+      el.classList.add('ring-2', 'ring-primary', 'bg-surface-container-lowest', 'shadow-md');
+      el.classList.remove('bg-surface-container-low');
+      const badge = el.querySelector('.palette-badge');
+      if (badge) badge.classList.remove('hidden');
+    }
+  </script>
+<!-- ==================== SUB-HEADER CONTEXT BAR ==================== -->
+<section class="w-full bg-surface-container-lowest shadow-sm py-4 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-2 sm:gap-3">
+<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors" href="#step-3">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Back to Guest Scale</span>
+</a>
+<div class="h-4 w-px bg-outline-variant/50 hidden sm:block"></div>
+<div class="flex flex-wrap items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="text-base leading-none">💍</span> Rohan &amp; Ananya’s Vivah
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span> Bengaluru
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="font-currency-display text-sm font-bold text-primary">₹15.0L Budget</span>
+<span class="text-outline-variant">•</span>
+<span class="bg-surface-container px-2 py-0.5 rounded-md font-medium text-xs text-on-surface">300 Guests</span>
+<span class="text-outline-variant">•</span>
+<span class="bg-tertiary-fixed/40 px-2 py-0.5 rounded-md font-medium text-xs text-tertiary">3 Days</span>
+</div>
+</div>
+<!-- Mode Toggle -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-full">
+<button class="px-3 py-1 rounded-full font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs">bolt</span>
+<span>Quick 60s AI</span>
+</button>
+<button class="px-3.5 py-1 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-xs flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+<span>Curated Mood Mode</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ==================== MAIN EDITORIAL GRID ==================== -->
+<section class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- ==================== LEFT COLUMN: WIZARD CONFIGURATOR (8 COLS) ==================== -->
+<div class="lg:col-span-8 flex flex-col gap-10">
+<!-- 1. VENUE ARCHETYPE SELECTION -->
+<div class="flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center font-label-md">1</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Space &amp; Environment</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Select Venue Archetype</h2>
+</div>
+<!-- Segment Filter -->
+<div class="inline-flex p-1 bg-surface-container rounded-full self-start sm:self-auto">
+<button class="px-3 py-1 rounded-full font-label-md text-xs text-on-surface-variant hover:text-primary" type="button">Indoor AC</button>
+<button class="px-3 py-1 rounded-full font-label-md text-xs text-on-surface-variant hover:text-primary" type="button">Open Lawns</button>
+<button class="px-3 py-1 rounded-full bg-primary text-on-primary font-label-md text-xs shadow-xs" type="button">Both / Hybrid (Recommended)</button>
+</div>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1: Banquet Ballroom -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge hidden absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Banquet Ballroom</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-xs">150–600 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-md text-xs">Zero Rain Risk</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Climate-controlled hall with high acoustic ceilings, integrated lighting rigs, and crystal chandeliers.</p>
+<div class="flex items-center gap-2 pt-2 border-t-0 text-xs text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-sm text-secondary">verified</span>
+<span>Best for: Sangeet sound clarity &amp; elder AC comfort</span>
+</div>
+</div>
+<!-- Card 2: Lawn & Farmhouse Estate (SELECTED) -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-lowest ring-2 ring-primary shadow-md transition-all flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-primary text-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">holiday_village</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-primary font-bold">Lawn &amp; Farmhouse Estate</h3>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed/60 text-on-tertiary-fixed font-label-md text-xs font-semibold">300–1500 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-xs font-semibold">AI Match 98%</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">Private green sanctuary with poolside patio, open lawn for pheras, and secluded villa suites. Late-night acoustic leeway.</p>
+<div class="flex items-center gap-2 pt-2 text-xs text-primary font-label-md font-semibold">
+<span class="material-symbols-outlined text-sm text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>Ideal for multi-day Haldi + Vivah combination</span>
+</div>
+</div>
+<!-- Card 3: 5-Star Luxury Resort -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge hidden absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">hotel</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">5-Star Luxury Resort</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-xs">100–700 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-xs">Valet &amp; Rooms</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Opulent bridal preparation suites, bespoke culinary master-chefs, and integrated guest room blocking.</p>
+<div class="flex items-center gap-2 pt-2 text-xs text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-sm text-secondary">local_florist</span>
+<span>In-house floral decor partnerships available</span>
+</div>
+</div>
+<!-- Card 4: Heritage Haveli / Courtyard -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge hidden absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">fort</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Heritage Haveli &amp; Courtyard</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-xs">150–450 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed/30 text-on-tertiary-fixed font-label-md text-xs">Royal Vibe</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Carved stone arches, central open thinnai courtyards, brass water bodies, and authentic regional gravitas.</p>
+<div class="flex items-center gap-2 pt-2 text-xs text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-sm text-secondary">photo_camera</span>
+<span>Spectacular architectural photo backdrops</span>
+</div>
+</div>
+<!-- Card 5: Lawn / Open Garden -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge hidden absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">park</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Lawn &amp; Open Garden</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-xs">300–1500 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-xs">Starlit Canopies</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lush green sprawl with old banyan or rain trees, sacred Havankund fire clearance, and wide fireworks safe zone.</p>
+<div class="flex items-center gap-2 pt-2 text-xs text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-sm text-secondary">nature_people</span>
+<span>Requires rain-proof mandap backup plan</span>
+</div>
+</div>
+<!-- Card 6: Community / Temple Mantapa -->
+<div class="venue-card relative cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group" onclick="selectVenue(this)">
+<div class="selection-badge hidden absolute top-4 right-4 w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</div>
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl">temple_hindu</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Temple Kalyana Mantapa</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-xs">400–2000 Guests</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-md text-xs">Traditional</span>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Traditional Vedic hall with vast leaf-service dining halls (Bale Ele Oota) and integrated priest sanctums.</p>
+<div class="flex items-center gap-2 pt-2 text-xs text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined text-sm text-secondary">dining</span>
+<span>Optimized for fast South Indian banana-leaf dining</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. AESTHETIC VIBE & ATMOSPHERE -->
+<div class="flex flex-col gap-5 pt-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center font-label-md">2</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Design Language</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Aesthetic Vibe &amp; Atmosphere</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Select the signature visual tenor that guides your stage setup, table scapes, and guest photobooths.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Aesthetic 1: Royal & Regalia (SELECTED) -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-primary/5 ring-2 ring-primary shadow-md flex flex-col justify-between gap-3 group transition-all relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An opulent Indian royal wedding setup inside an antique courtyard, adorned with deep maroon velvet curtains, massive antique brass urlis filled with water and floating marigold flowers, glowing candlelight lanterns and intricate hand-carved stone architecture under warm amber 2700K lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIoQ6W-TxRQlI_c_QDVWae6AEC--l3Sc_TgPk2D3uKNEk5Y97LecfZz0xfpI_vjAz-TqrfCuvqcdZVMgL29eYDXRlTHGyW30Xf5YiiK0_N6YS6JHKoG2JnlTibcBV9t0qSe_VwbNbMpXeBgs24WwIk9KWnqbCKzIX-RFtjDJthQZgifirlzOwUUPm2mWvE--2lPtAgkXyi5dctd1ItmY5_5WgvUtMoHfQc8xvsFtweax2kNJzeZ9WF"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<span class="absolute bottom-2 left-2 px-2 py-0.5 rounded-full bg-surface-container-lowest/90 font-label-md text-[11px] font-bold text-primary flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-xs text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">star</span> Most Popular
+                </span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary font-bold">Royal &amp; Regalia</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Deep maroon velours, antique lanterns, brass urlis, and palace courtyard grandeur.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Brass Urlis</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Marigold Ropes</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Chandeliers</span>
+</div>
+</div>
+<!-- Aesthetic 2: Traditional & Vedic -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-3 group relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge hidden absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Traditional South Indian Vedic wedding mandap covered with thousands of fresh fragrant white jasmine mogra garlands, sacred holy basil leaves, golden bell hangings, and clean raw brass oil lamps under morning temple sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPcMZdi74cHu22EiUGgxX4WS_8uAbbd27eoXzzQa6_SkL4p4LPZHDcNl7R_jcLPyMDNN1OQre4Nh2m2wlbxAzhT9XVzaNW3RRwn3jGg7jKrtBmyPG6jO7OifWzrZSQMAuhG3cPWUgz3I762emzxK1_mg6XxsRj1C9EbA_iwP60cRbr0bQU4sJWdrqjbILi2fdeh84DTXxw-b6giMl0Bsgt2wd3pU6oBzd_gGb9mPEIYV1drelEiiGr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Traditional &amp; Vedic</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Auspicious fresh mogra, cascading marigold canopies, and pure sacred Havankund focus.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Fresh Mogra</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Temple Brass</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Torans</span>
+</div>
+</div>
+<!-- Aesthetic 3: Modern Elegance -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-3 group relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge hidden absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Contemporary luxury wedding stage with sleek clear acrylic geometric mandap pillars, white orchid floral clouds, ghost chairs, and understated modern champagne uplighting for high-end urban elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsKK9bDh7k05QNVONb04LKSrfnjKoZtkHaa1TQZ2GABA8DdG5fMOsBLgf_jrUzA3g_fx4_yguJ-4V2k2STRSftLQ7iRznQgoqWouhTraIxfpIWRHTG3Z-LRWH33G3e-Xj7c8B8PkRStFCtsLd3rbzDKIvavMY8qxBWnrPN8lqhQm5sfvJPzNeARSyRqu25ITC4flQFT7V-QlT5qwD8Oo3tS15Aov9L6MaFlaVsXKdim9m-7vgLb0wu"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Modern Elegance</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Geometric mandap structures, transparent ghost seating, and soft architectural warm lighting.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Pastel Blooms</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Glass Mandap</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Ghost Chairs</span>
+</div>
+</div>
+<!-- Aesthetic 4: Minimalist Chic -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-3 group relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge hidden absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Intimate outdoor celebration setup featuring organic cream linen drapery, dense cloud-like baby's breath floral arches, hurricane candle cylinders along the aisle, and rustic wood accents in natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr4kpO5szlAXUcNF5k9Dwmc8ZaqXrFcF5rLizlLkjUmpQUb8HWA2RV6k8WuQFe2QjthmVBOkT_d4GNTWjhaYfNe0TnXVFEYuINtOJ1hI1gJFD8IskS4WJbe0LUCtEZy83pYdAL52g_KpQ6lTWFW2VtF6VKgWl3JFP8I1WsYn6FDXItA-iMpaAGs4zemHjlsx0P0c2zj8Wz1i7Riizy9yDULVBOAypZyk2FfIPAnnYBLbAlC92_-dAf"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Minimalist Chic</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Airy natural linen drapes, lush baby's breath clouds, and tall glass hurricane candlelight.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Candle Run</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Baby's Breath</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Raw Linen</span>
+</div>
+</div>
+<!-- Aesthetic 5: Rustic Bohemian -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-3 group relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge hidden absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm bohemian outdoor wedding lounge with tall fluffy pampas grass installations, hand-woven cane basket lanterns, macrame backdrops, and raw wooden farm tables decorated with dried florals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdraGCcl5NcnuZ_i5GyZHpCLDKZGnCD5ihURH-9IL2UXxZ3WUqouYiLcxQEzuN7KaJiEhP8lNmhnH35NemzZVATFvPTa3343FNJ1BERFKE6Pvi3ey_CJT5_Aj2qsHQcd4_5K8bTmQ4NR6ZvAB4g9bt-QQ-GcR8bzphCsGx9m9a0zK0oPYuwcNdzC9ZRe5e1ca02PApfTciGXpbSDT-FGjYqIgbbqblJcQKHvygdOKuO5_tEHSIG7Rp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Rustic Bohemian</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Feathered pampas plumes, cane woven lighting, raw timber banquets, and desert sand tones.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Pampas Grass</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Edison Bulbs</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Wicker Art</span>
+</div>
+</div>
+<!-- Aesthetic 6: Fun & Colourful -->
+<div class="aesthetic-card cursor-pointer rounded-2xl p-4 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-3 group relative overflow-hidden" onclick="selectAesthetic(this)">
+<div class="aesthetic-badge hidden absolute top-3 right-3 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div class="h-32 rounded-xl overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant Indian Mehendi festival lawn decorated with mirror-work Rajasthani parasols, kaleidoscopic cushions in turquoise and hot pink, funky neon signage, and dangling floral pompoms in sunny lawn daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPAhbRyPvgUHh2fagOPJH4XhvV-pF31mXTBQ5_rhsfZW1WOIxUY4rwGd2iCI51a-q9U-yqyigcvunrL1-mRbKtCVUfQsjyzkuGPhCIPML_1BZ2BK2a_zNubdDTO7bZKerZ57DjqUecn1xzAf34GzmCTf9_870hJRQRftdxBM_C9UJ7TMZlW2xebQKaxBO9tFSPdOg7ITLbZ6GqiEPohkxrHVn7LFlAX8zBEzNFyE9lOZpte0VkTujv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Fun &amp; Colourful</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Hand-embroidered Rajasthani parasols, radiant neon quote backdrops, and playful tasseling.</p>
+</div>
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Neon Booths</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Umbrellas</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant font-label-md text-[11px]">Tassels</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. AUSPICIOUS COLOR PALETTE PICKER -->
+<div class="flex flex-col gap-5 pt-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center font-label-md">3</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Harmonious Accents</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Auspicious Color Palette</h2>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-xs font-semibold transition-colors self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-sm">palette</span>
+<span>+ Custom Hex / Card Code</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Palette 1: Royal Rajputana (SELECTED) -->
+<div class="palette-card cursor-pointer rounded-2xl p-5 bg-surface-container-lowest ring-2 ring-primary shadow-md flex flex-col justify-between gap-4 group transition-all relative" onclick="selectPalette(this)">
+<div class="palette-badge absolute top-4 right-4 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h4 class="font-title-md text-title-md text-primary font-bold">Royal Rajputana</h4>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-md text-[11px] font-semibold">Matched to Vibe</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Deep Heritage Maroon, Festive Marigold, Warm Sand Ivory &amp; Regal Forest Emerald.</p>
+</div>
+<!-- Swatch Bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#7A1E3A] shadow-xs" title="Deep Maroon #7A1E3A"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#F2A900] shadow-xs" title="Festive Marigold #F2A900"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#FDFBF7] shadow-xs" title="Warm Sand Ivory #FDFBF7"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#1B4332] shadow-xs" title="Regal Emerald #1B4332"></div>
+</div>
+<div class="font-label-md text-xs text-on-surface-variant">
+                  #7A1E3A • #F2A900 • #FDFBF7
+                </div>
+</div>
+</div>
+<!-- Palette 2: Pastel Gulab & Mogra -->
+<div class="palette-card cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group relative" onclick="selectPalette(this)">
+<div class="palette-badge hidden absolute top-4 right-4 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Pastel Gulab &amp; Mogra</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Dusty Rose, Soft Sage Green, Golden Champagne &amp; Pure Pearl Silk.</p>
+</div>
+<!-- Swatch Bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#E07A5F] shadow-xs" title="Dusty Rose"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#81B29A] shadow-xs" title="Soft Sage"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#F2CC8F] shadow-xs" title="Champagne"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#FAF0CA] shadow-xs" title="Pearl Silk"></div>
+</div>
+<div class="font-label-md text-xs text-on-surface-variant">
+                  #E07A5F • #81B29A • #F2CC8F
+                </div>
+</div>
+</div>
+<!-- Palette 3: Marigold Sunrise -->
+<div class="palette-card cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group relative" onclick="selectPalette(this)">
+<div class="palette-badge hidden absolute top-4 right-4 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Marigold Sunrise</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Sun Marigold, Fresh Tangerine, Sindoor Vermilion &amp; Raw Coconut Cream.</p>
+</div>
+<!-- Swatch Bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#E76F51] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#F4A261] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#D62828] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#FFF3B0] shadow-xs"></div>
+</div>
+<div class="font-label-md text-xs text-on-surface-variant">
+                  #E76F51 • #F4A261 • #D62828
+                </div>
+</div>
+</div>
+<!-- Palette 4: Emerald & Jewel Glow -->
+<div class="palette-card cursor-pointer rounded-2xl p-5 bg-surface-container-low hover:bg-surface-container-lowest transition-all hover:shadow-md flex flex-col justify-between gap-4 group relative" onclick="selectPalette(this)">
+<div class="palette-badge hidden absolute top-4 right-4 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface font-bold">Emerald &amp; Jewel Glow</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Forest Emerald, Royal Peacock Sapphire, Burnished Gold &amp; Sand.</p>
+</div>
+<!-- Swatch Bar -->
+<div class="flex items-center gap-3">
+<div class="flex items-center -space-x-2">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#2D6A4F] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#1D3557] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#D4AF37] shadow-xs"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-[#E9D8A6] shadow-xs"></div>
+</div>
+<div class="font-label-md text-xs text-on-surface-variant">
+                  #2D6A4F • #1D3557 • #D4AF37
+                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. CEREMONIES & RITUALS MULTI-SELECT CHECKLIST -->
+<div class="flex flex-col gap-5 pt-4">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center font-label-md">4</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Ritual Blueprints</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Ceremonies &amp; Rituals Checklist</h2>
+</div>
+<span class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-xs font-semibold shadow-xs" id="ceremony-count-pill">
+              4 Functions Selected
+            </span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Item 1: Haldi (Checked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-primary/5 shadow-sm transition-all flex items-start gap-3.5" id="ceremony-1" onclick="toggleCeremony('1')">
+<div class="w-6 h-6 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5" data-checked="true" id="chk-1">
+<span class="material-symbols-outlined text-sm text-on-secondary font-bold">check</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">Haldi Ceremony</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed/60 text-on-tertiary-fixed font-label-md text-[11px] font-semibold">Day 1 • Morning</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Phoolon ki holi floral showers, brass urlis, organic turmeric paste bowls, traditional live dholak players.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-primary bg-primary-fixed/50 px-2.5 py-1 rounded-full whitespace-nowrap">~80 Guests</span>
+</div>
+</div>
+</div>
+<!-- Item 2: Mehendi (Checked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-primary/5 shadow-sm transition-all flex items-start gap-3.5" id="ceremony-2" onclick="toggleCeremony('2')">
+<div class="w-6 h-6 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5" data-checked="true" id="chk-2">
+<span class="material-symbols-outlined text-sm text-on-secondary font-bold">check</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">Mehendi &amp; Chaat Sundowner</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-md text-[11px] font-semibold">Day 1 • Afternoon</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">6 Rajasthani bridal henna artists, live kachori/chaat carts, lacquer bangle gifting bar, colorful bolster seating.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-primary bg-primary-fixed/50 px-2.5 py-1 rounded-full whitespace-nowrap">~120 Guests</span>
+</div>
+</div>
+</div>
+<!-- Item 3: Sangeet (Checked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-primary/5 shadow-sm transition-all flex items-start gap-3.5" id="ceremony-3" onclick="toggleCeremony('3')">
+<div class="w-6 h-6 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5" data-checked="true" id="chk-3">
+<span class="material-symbols-outlined text-sm text-on-secondary font-bold">check</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">Sangeet &amp; Cocktail Gala</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-md text-[11px] font-semibold">Day 2 • Evening</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Hydraulic LED dance floor, concert trussing, DJ &amp; sound engineers, signature mocktail/cocktail mixologists.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-primary bg-primary-fixed/50 px-2.5 py-1 rounded-full whitespace-nowrap">~260 Guests</span>
+</div>
+</div>
+</div>
+<!-- Item 4: Vivah (Checked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-primary/5 shadow-sm transition-all flex items-start gap-3.5" id="ceremony-4" onclick="toggleCeremony('4')">
+<div class="w-6 h-6 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5" data-checked="true" id="chk-4">
+<span class="material-symbols-outlined text-sm text-on-secondary font-bold">check</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-primary font-bold">Auspicious Mandap Vivah (Pheras)</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-[11px] font-bold">Day 3 • Muhurat 10:18 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Pandit samagri kit, consecrated havan kund, 20kg rose petal shower, live shehnai &amp; nadaswaram quartet.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-primary bg-primary-fixed/50 px-2.5 py-1 rounded-full whitespace-nowrap">300 Guests Peak</span>
+</div>
+</div>
+</div>
+<!-- Item 5: Formal Gala Reception (Unchecked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-surface-container-low hover:bg-surface-container-lowest transition-all flex items-start gap-3.5" id="ceremony-5" onclick="toggleCeremony('5')">
+<div class="w-6 h-6 rounded-md bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5" data-checked="false" id="chk-5"></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-medium">Formal Gala Reception</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[11px]">Optional Day 3 Night</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Elevated bridal photography stage, red-carpet greeting line, seated banquet service.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">+ Add Ceremony</span>
+</div>
+</div>
+</div>
+<!-- Item 6: Griha Pravesh (Unchecked) -->
+<div class="cursor-pointer p-4 rounded-2xl bg-surface-container-low hover:bg-surface-container-lowest transition-all flex items-start gap-3.5" id="ceremony-6" onclick="toggleCeremony('6')">
+<div class="w-6 h-6 rounded-md bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 mt-0.5" data-checked="false" id="chk-6"></div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between w-full gap-2">
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-medium">Griha Pravesh &amp; Welcome Puja</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-[11px]">Post-Wedding</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Home entrance brass kalash setup, fresh rice grain rangoli artists, small homa fire.</p>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-md text-xs font-semibold text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1">+ Add Ceremony</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. VISUAL INSPIRATION & MOODBOARD UPLOAD -->
+<div class="flex flex-col gap-5 pt-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary text-xs font-semibold flex items-center justify-center font-label-md">5</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">Vision Ingestion</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Visual Inspiration &amp; Mood-Board</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Upload screenshots or paste Pinterest wedding links. EventEase Vision AI parses exact color codes, mandap canopy styles, and floral requirements.</p>
+</div>
+<!-- Drag and Drop Box -->
+<div class="p-8 rounded-2xl bg-surface-container-low border-2 border-dashed border-outline-variant/80 flex flex-col items-center justify-center text-center gap-3 hover:bg-surface-container transition-colors group cursor-pointer">
+<div class="w-14 h-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface font-bold">Drag and drop moodboard photos here</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Supports PNG, JPG, HEIC files up to 25MB, or link public Pinterest boards</p>
+</div>
+<div class="flex flex-wrap items-center gap-3 mt-2">
+<button class="px-4 py-2 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container shadow-xs transition-all" type="button">
+                Browse Files
+              </button>
+<button class="px-4 py-2 rounded-xl bg-surface-container-highest text-on-surface font-label-lg text-label-lg hover:bg-outline-variant/40 transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm text-error">push_pin</span>
+<span>Paste Pinterest URL</span>
+</button>
+</div>
+</div>
+<!-- AI Parsed Attachment Card -->
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-between gap-4">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-14 h-14 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="A sample close-up photo of a brass urli with water, floating orange marigolds and pink rose petals at an Indian wedding entrance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCraVzLKADhFb1EQ4kGvNeIw8vGXX81BcoLn-qpkMGxyNqdb5mwX6WcnoxXbl2nRK7iIZXQMk3xKXXjSy1phMGrogP2CR9VSkz1SNgEueK6WZpe5hvnPRicB6wSuj9OOWeIHEQ4g3yMjVi3QeYsFrYsGTPVY5PZ97oDX4KSCeRPGlcZHfTKOTaHgzT86n2lEGKRI070LmJxEHuwsk02m0TlZX-_88_svNNrlHCHeLSA_UCKj_JOHKCn"/>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-title-md text-sm font-bold text-on-surface truncate">Mandap_Brass_Urli_Theme.jpg</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/50 text-on-secondary-container font-label-md text-[10px] font-bold shrink-0">AI PARSED</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant truncate mt-0.5">80% Marigold &amp; Gulab, 20% Antique Brass • Est. ₹45K floral inventory mapped</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container text-on-surface-variant hover:text-error hover:bg-error-container/40 flex items-center justify-center shrink-0 transition-colors" type="button">
+<span class="material-symbols-outlined text-base">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- ==================== RIGHT COLUMN: STICKY ATMOSPHERE BLUEPRINT (4 COLS) ==================== -->
+<div class="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-36">
+<!-- Atmosphere Blueprint Card -->
+<div class="rounded-3xl bg-surface-container-lowest p-6 shadow-md flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary text-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold">Atmosphere Blueprint</h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-md text-xs font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span> Real-Time AI
+            </span>
+</div>
+<!-- Cost Estimation Breakdown -->
+<div class="p-4 rounded-2xl bg-surface-container-low flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<span class="font-label-md text-xs text-on-surface-variant font-medium">Decor &amp; Floral Allocation</span>
+<span class="font-currency-display text-currency-display font-bold text-primary">₹3.8L – ₹4.4L</span>
+</div>
+<p class="font-body-sm text-xs text-on-surface-variant">
+              Fits 26% of your <span class="font-semibold text-on-surface">₹15.0L</span> total wedding budget. Recommended range for 300 guests across 3 days.
+            </p>
+<!-- Mini Bar Segment Breakdown -->
+<div class="flex flex-col gap-1.5 mt-1">
+<div class="w-full h-2.5 rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 55%;" title="Mandap &amp; Stage (55%)"></div>
+<div class="bg-tertiary-fixed-dim h-full" style="width: 25%;" title="Ambient Lights &amp; Lawn (25%)"></div>
+<div class="bg-secondary h-full" style="width: 20%;" title="Entrance &amp; Photobooths (20%)"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] font-label-md text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Mandap 55%</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span> Lighting 25%</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> Entry 20%</span>
+</div>
+</div>
+</div>
+<!-- AI Specifications Accordion / Highlights -->
+<div class="flex flex-col gap-3.5 font-body-sm text-body-sm">
+<!-- Warm Lighting Spec -->
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70">
+<span class="material-symbols-outlined text-primary text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+<div>
+<p class="font-title-md text-xs font-bold text-on-surface">2700K Warm Ambient Illumination</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Optimized for Kanjeevaram silks, zardozi embroidery, and real gold bridal jewelry photography.</p>
+</div>
+</div>
+<!-- Acoustic Zone Split -->
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70">
+<span class="material-symbols-outlined text-secondary text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">hearing</span>
+<div>
+<p class="font-title-md text-xs font-bold text-on-surface">Elder-Friendly Acoustic Zone</p>
+<p class="text-xs text-on-surface-variant mt-0.5">Main lawn split: 85dB dance area near the stage, with protected &lt;65dB serene seating for senior relatives.</p>
+</div>
+</div>
+<!-- Fresh Flower Quota -->
+<div class="flex items-start gap-3 p-3 rounded-xl bg-surface-container-low/70">
+<span class="material-symbols-outlined text-tertiary text-xl mt-0.5 shrink-0" style="font-variation-settings: 'FILL' 1;">local_florist</span>
+<div>
+<p class="font-title-md text-xs font-bold text-on-surface">Fresh Flower Mandi Quota</p>
+<p class="text-xs text-on-surface-variant mt-0.5">140kg Marigold ropes, 45kg Mogra strings, and 2,200 local rose stems calculated for pheras shower.</p>
+</div>
+</div>
+<!-- Local Procurement Edge -->
+<div class="p-3.5 rounded-xl bg-secondary-container/20 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-label-md text-xs font-bold">
+<span class="material-symbols-outlined text-sm">savings</span>
+<span>Bengaluru Sourcing Advantage</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                Direct wholesale mandi procurement from <span class="font-bold text-on-surface">KR Market &amp; City Flower Hub</span> automatically saves ~₹38,000 compared to standard boutique florists.
+              </p>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">share</span>
+<span>Share Moodboard to Family WhatsApp</span>
+</button>
+</div>
+<!-- AI Concierge Interactive Prompt Box -->
+<div class="rounded-3xl bg-surface-container-low p-5 shadow-xs flex flex-col gap-3 relative overflow-hidden">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-xs font-bold text-primary">EventEase AI Concierge</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-snug">
+                Since you selected a <span class="font-semibold text-primary">Farmhouse in Bengaluru</span> for 300 guests with Royal Rajputana tones, shall I add a waterproof canopy buffer for the afternoon Mehendi lawn?
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1 pl-11">
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-xs font-semibold hover:bg-primary-container transition-colors shadow-xs" type="button">
+              Yes, add canopy buffer
+            </button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-xs font-semibold hover:bg-surface-container-highest transition-colors" type="button">
+              Skip
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== STICKY BOTTOM DOCK (MOBILE & DESKTOP COHESION) ==================== -->
+<aside class="sticky bottom-0 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-xl py-4 px-4 sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<!-- Selection Summary Pills -->
+<div class="hidden sm:flex items-center gap-2 font-label-md text-xs text-on-surface-variant overflow-x-auto max-w-xl">
+<a class="hover:text-primary transition-colors flex items-center gap-1 font-semibold text-primary" href="#step-3">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>Edit Specs</span>
+</a>
+<span>•</span>
+<span class="bg-surface-container px-2.5 py-1 rounded-full text-on-surface">Farmhouse Estate</span>
+<span class="bg-surface-container px-2.5 py-1 rounded-full text-on-surface">Royal &amp; Regalia</span>
+<span class="bg-surface-container px-2.5 py-1 rounded-full text-on-surface">Rajputana Swatches</span>
+<span class="bg-surface-container px-2.5 py-1 rounded-full text-on-surface">4 Ceremonies</span>
+</div>
+<!-- Action Button Group -->
+<div class="flex items-center justify-between sm:justify-end w-full sm:w-auto gap-4">
+<div class="flex flex-col text-right hidden lg:flex">
+<span class="font-label-md text-xs font-bold text-primary">Next: Step 5 of 5</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Final AI Vendor Blueprints &amp; Budget in ₹</span>
+</div>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary-container transition-all hover:shadow-lg active:scale-95" href="#step-5">
+<span>Continue to Final Review &amp; Budget</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div></main>
+<!-- ==================== 2. COMPREHENSIVE FOOTER ==================== -->
+<footer class="w-full bg-surface-container-low border-t border-outline-variant/40">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12">
+<!-- Brand Summary Column -->
+<div class="lg:col-span-2 flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-tertiary-fixed shadow-xs">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">celebration</span>
+</div>
+<span class="font-headline-md text-headline-md text-primary">EventEase</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pr-0 lg:pr-8">
+          Harmonizing sacred rituals, modern hospitality, and intelligent planning across India. Thoughtful Muhurat scheduling, regional vendor matchmaking, and complete Lakh/Crore budget clarity.
+        </p>
+<div class="inline-flex items-center gap-2.5 px-3.5 py-2 rounded-xl bg-surface-container border border-outline-variant/60 w-fit">
+<span class="material-symbols-outlined text-secondary font-bold text-base">chat</span>
+<span class="font-label-md text-label-md text-primary font-semibold">WhatsApp AI Concierge: +91 98200 12345</span>
+</div>
+</div>
+<!-- Event Types Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Event Types</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#event-types">Weddings &amp; Vivah</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Milestone Birthdays</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Griha Pravesh</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Community Pujas</a>
+<a class="hover:text-primary transition-colors" href="#event-types">Corporate Dinners</a>
+</div>
+</div>
+<!-- Planning Tools Links -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Planning Tools</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#features">Smart Budget Split</a>
+<a class="hover:text-primary transition-colors" href="#features">Vendor Price Estimates</a>
+<a class="hover:text-primary transition-colors" href="#features">Negotiation Tips</a>
+<a class="hover:text-primary transition-colors" href="#sample-plan">Download Sample Plan</a>
+<a class="hover:text-primary transition-colors" href="#features">Checklists &amp; Timelines</a>
+</div>
+</div>
+<!-- City & Legal Column -->
+<div class="flex flex-col gap-3">
+<span class="font-title-md text-title-md text-primary font-bold">Key Destinations</span>
+<div class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span>Bengaluru &amp; Hyderabad</span>
+<span>Mumbai &amp; Pune</span>
+<span>Delhi NCR &amp; Jaipur</span>
+<span>Udaipur &amp; Goa</span>
+<a class="text-secondary font-semibold hover:underline mt-1" href="#">Explore City Guides →</a>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="mt-12 pt-8 border-t border-outline-variant/40 flex flex-col md:flex-row items-center justify-between gap-4 font-label-md text-label-md text-on-surface-variant">
+<p>© 2025 EventEase Technologies India. Designed with festive warmth &amp; precision.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Celebration</a>
+<a class="hover:text-primary transition-colors" href="#">Safety Guidelines</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
