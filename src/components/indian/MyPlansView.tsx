@@ -108,9 +108,17 @@ export const MyPlansView: React.FC<MyPlansViewProps> = ({
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-0.5 rounded-full bg-[#FAF3EB] text-[#7A1E3A] text-xs font-semibold capitalize border border-[#E3D5CA]">
-                  {p.type}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 rounded-full bg-[#FAF3EB] text-[#7A1E3A] text-xs font-semibold capitalize border border-[#E3D5CA]">
+                    {p.type}
+                  </span>
+                  {(p.id.includes('sample') || p.name.includes('Sample Plan')) && (
+                    <span className="px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[11px] font-semibold flex items-center gap-1">
+                      <span className="material-symbols-outlined text-xs text-amber-600">star</span>
+                      Sample Plan
+                    </span>
+                  )}
+                </div>
                 <span className="text-xs font-semibold text-[#2A9D8F] flex items-center gap-1">
                   <span className="material-symbols-outlined text-sm">schedule</span>
                   {p.daysLeft} days to go

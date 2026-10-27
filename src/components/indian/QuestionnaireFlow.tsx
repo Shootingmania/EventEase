@@ -21,7 +21,6 @@ export const QuestionnaireFlow: React.FC<QuestionnaireFlowProps> = ({
   defaultCity = 'Bengaluru',
 }) => {
   const [step, setStep] = useState<number>(1);
-  const [isQuickPlan, setIsQuickPlan] = useState<boolean>(true);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [loadingMessage, setLoadingMessage] = useState<string>('Formulating budget distribution...');
 
@@ -328,29 +327,16 @@ export const QuestionnaireFlow: React.FC<QuestionnaireFlowProps> = ({
             </h1>
           </div>
 
-          <div className="flex items-center p-1 bg-[#FAF3EB] rounded-full self-start sm:self-auto border border-[#E3D5CA]">
-            <button
-              onClick={() => setIsQuickPlan(true)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1 ${
-                isQuickPlan
-                  ? 'bg-[#7A1E3A] text-white shadow-xs'
-                  : 'text-[#5E514D] hover:text-[#7A1E3A]'
-              }`}
+          <div className="flex items-center gap-2 px-3.5 py-1.5 bg-[#FAF3EB] rounded-full border border-[#E3D5CA] self-start sm:self-auto">
+            <span
+              className="material-symbols-outlined text-sm text-[#F2A900]"
+              style={{ fontVariationSettings: "'FILL' 1" }}
             >
-              <span className="material-symbols-outlined text-sm">bolt</span>
-              <span>Quick Plan</span>
-            </button>
-            <button
-              onClick={() => setIsQuickPlan(false)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1 ${
-                !isQuickPlan
-                  ? 'bg-[#7A1E3A] text-white shadow-xs'
-                  : 'text-[#5E514D] hover:text-[#7A1E3A]'
-              }`}
-            >
-              <span className="material-symbols-outlined text-sm">tune</span>
-              <span>Detailed Plan</span>
-            </button>
+              auto_awesome
+            </span>
+            <span className="text-xs font-semibold text-[#7A1E3A]">
+              Step {step} of 6
+            </span>
           </div>
         </div>
 

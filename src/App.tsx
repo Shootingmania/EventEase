@@ -14,7 +14,7 @@ import { MyPlansView } from './components/indian/MyPlansView';
 import { QuestionnaireFlow } from './components/indian/QuestionnaireFlow';
 import { ConciergeModal } from './components/indian/ConciergeModal';
 
-const STORAGE_KEY = 'eventease_indian_plans_v3';
+const STORAGE_KEY = 'eventease_indian_plans_v4';
 
 export default function App() {
   const [plans, setPlans] = useState<PlanProfile[]>(() => {
@@ -22,17 +22,36 @@ export default function App() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed: PlanProfile[] = JSON.parse(stored);
-        return parsed.map((p) => {
-          const needsFreshTasks = !p.tasks || p.tasks.length <= 4;
-          return {
-            ...p,
-            readinessPercent: needsFreshTasks ? 0 : (p.readinessPercent ?? 0),
-            tasks: needsFreshTasks
-              ? getDefaultTasksForOccasion(p.type, p.name, p.date, p.daysLeft)
-              : p.tasks,
-          };
-        });
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((p) => {
+            const needsFreshTasks = !p.tasks || p.tasks.length <= 4;
+            return {
+              ...p,
+              readinessPercent: needsFreshTasks ? 0 : (p.readinessPercent ?? 0),
+              tasks: needsFreshTasks
+                ? getDefaultTasksForOccasion(p.type, p.name, p.date, p.daysLeft)
+                : p.tasks,
+            };
+          });
+        }
       }
+
+      // If user had existing custom plans in previous storage version, keep only their created plans + the 1 sample plan
+      const oldV3 = localStorage.getItem('eventease_indian_plans_v3');
+      if (oldV3) {
+        const parsedOld: PlanProfile[] = JSON.parse(oldV3);
+        const legacyMockIds = [
+          'plan_riya_1st_bday',
+          'plan_wedding_aarav_ananya',
+          'plan_diwali_mela_2025',
+          'plan_sharma_golden_jubilee',
+        ];
+        const userCreated = parsedOld.filter((p) => !legacyMockIds.includes(p.id));
+        if (userCreated.length > 0) {
+          return [...userCreated, INITIAL_INDIAN_PLANS[0]];
+        }
+      }
+
       return INITIAL_INDIAN_PLANS;
     } catch {
       return INITIAL_INDIAN_PLANS;
